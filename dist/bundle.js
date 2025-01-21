@@ -18673,7 +18673,7 @@ const create = () => __awaiter(undefined, undefined, undefined, function* () {
 const program = new Command();
 program.name("cli").version("0.0.1");
 program
-    .command("yys-app-cli")
+    .command("create")
     .description("create a new project")
     .action(() => {
     console.log("start to create project...");
