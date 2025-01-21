@@ -1,4 +1,4 @@
-### create-web-app v0.0.1 企业级前端脚手架
+### yys-app-cli v0.0.1 企业级前端脚手架
 
 - 🚀 快速搭建企业级前端项目
 - 📦️ 支持 Vue、React、Angular 三种框架
@@ -9,5 +9,5 @@
 ## 快速开始
 
 ```bash
-npx create-web-app@latest
+npx yys-app-cli@latest
 ```

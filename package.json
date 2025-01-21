@@ -1,5 +1,5 @@
 {
-  "name": "create-web-app",
+  "name": "yys-app-cli",
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
   "license": "ISC",
   "description": "企业脚手架工具，支持vue、react等框架的快速搭建",
   "bin": {
-    "create-web-app": "bin/index.js"
+    "yys-app-cli": "bin/index.js"
   },
   "files": [
     "bin",
