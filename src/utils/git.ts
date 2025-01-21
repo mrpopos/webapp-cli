@@ -1,5 +1,5 @@
 import { simpleGit, SimpleGitOptions } from "simple-git";
-const createLogger = require("progress-estimator");
+import createLogger from "progress-estimator";
 import chalk from "chalk";
 // import cliSpinners from "cli-spinners";
 
@@ -9,7 +9,6 @@ const logger = createLogger({
     interval: 80, // The interval (in ms) between each spin.
     frames: ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"], // The frames to use for the spinner.
   },
-  logger: console,
   // theme: {
   //   // 自定义主题
   //   info: "cyan",
