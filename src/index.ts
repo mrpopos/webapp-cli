@@ -1,9 +1,10 @@
 import { Command } from "commander";
 import { create } from "./command/create";
+import { version } from "../package.json"
 
 const program = new Command();
 
-program.name("cli").version("0.0.1");
+program.name("cli").version(version);
 
 program
   .command("create")

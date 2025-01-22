@@ -2,6 +2,9 @@ import { input, select } from "@inquirer/prompts";
 import { clone } from "../utils/git";
 import { checkDirExists, isCoverDir } from "../utils/file";
 import fs from "node:fs/promises";
+import { version } from "../../package.json";
+import axios from "axios";
+import chalk from "chalk";
 
 interface ITemplateInfo {
   name: string;
@@ -67,6 +70,15 @@ export const templates: Map<string, ITemplateInfo> = new Map([
   ],
 ]);
 
+const checkVersion = async (name: string, version: string) => {
+  try {
+    const { data } = await axios.get(`https://registry.npmjs.org/${name}/latest`);
+    return data.version === version;
+  } catch (error) {
+    return false;
+  }
+};
+
 export const create = async () => {
   // 初始化模版列表
   // console.log("templates", templates);
@@ -74,6 +86,13 @@ export const create = async () => {
     const [key, value] = item;
     return { name: value.name, value: key, description: value.description };
   });
+  // 检测版本信息
+  const vbersionBool = await checkVersion("yys-app-cli", version);
+  if (!vbersionBool) {
+    console.log(chalk.red(`当前版本为${version}，请更新到最新版本`));
+    console.log(chalk.blueBright(`请执行以下命令更新：npm install -g yys-app-cli`));
+    return;
+  }
   // 输入项目名称
   const pName = await input({
     message: "Input project name: ",
