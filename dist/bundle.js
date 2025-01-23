@@ -18577,7 +18577,7 @@ function isCoverDir(name) {
     });
 }
 
-var version = "0.1.2";
+var version = "0.1.3";
 
 function bind(fn, thisArg) {
   return function wrap() {
