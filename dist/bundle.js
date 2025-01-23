@@ -1,27 +1,27 @@
 'use strict';
 
-var require$$0$2 = require('node:events');
+var require$$0$3 = require('node:events');
 var require$$1 = require('node:child_process');
 var require$$2 = require('node:path');
 var require$$3 = require('node:fs');
 var process$2 = require('node:process');
-var require$$0$7 = require('fs');
-var require$$0$4 = require('tty');
-var require$$0$6 = require('util');
-var require$$0$5 = require('os');
+var require$$0$8 = require('fs');
+var require$$0$5 = require('tty');
+var require$$0$7 = require('util');
+var require$$0$6 = require('os');
 var require$$1$1 = require('child_process');
-var require$$0$8 = require('assert');
+var require$$0$9 = require('assert');
 var require$$2$1 = require('events');
 var require$$2$2 = require('crypto');
 var require$$1$2 = require('path');
 var fs = require('node:fs/promises');
-var require$$0$3 = require('node:tty');
+var require$$0$4 = require('node:tty');
 var readline$1 = require('node:readline');
 var node_async_hooks = require('node:async_hooks');
 var stream = require('stream');
 var require$$3$1 = require('http');
 var require$$4 = require('https');
-var require$$0$9 = require('url');
+var require$$0$a = require('url');
 var zlib = require('zlib');
 
 function _interopNamespaceDefault(e) {
@@ -1455,7 +1455,7 @@ var hasRequiredCommand;
 function requireCommand () {
 	if (hasRequiredCommand) return command;
 	hasRequiredCommand = 1;
-	const EventEmitter = require$$0$2.EventEmitter;
+	const EventEmitter = require$$0$3.EventEmitter;
 	const childProcess = require$$1;
 	const path = require$$2;
 	const fs = require$$3;
@@ -4385,7 +4385,7 @@ var hasRequiredYoctocolorsCjs;
 function requireYoctocolorsCjs () {
 	if (hasRequiredYoctocolorsCjs) return yoctocolorsCjs;
 	hasRequiredYoctocolorsCjs = 1;
-	const tty = require$$0$3;
+	const tty = require$$0$4;
 
 	// eslint-disable-next-line no-warning-comments
 	// TODO: Use a better method when it's added to Node.js (https://github.com/nodejs/node/pull/40240)
@@ -4488,7 +4488,7 @@ var colors = /*@__PURE__*/getDefaultExportFromCjs(yoctocolorsCjsExports);
 // Property 'TERM' comes from an index signature, so it must be accessed with ['TERM'].ts(4111)
 /* eslint dot-notation: ["off"] */
 // Ported from is-unicode-supported
-function isUnicodeSupported() {
+function isUnicodeSupported$1() {
     if (process$2.platform !== 'win32') {
         return process$2.env['TERM'] !== 'linux'; // Linux console (kernel)
     }
@@ -4775,7 +4775,7 @@ const fallbackSymbols = {
     ...common$1,
     ...specialFallbackSymbols,
 };
-const shouldUseMain = isUnicodeSupported();
+const shouldUseMain = isUnicodeSupported$1();
 const figures = shouldUseMain ? mainSymbols : fallbackSymbols;
 
 const defaultTheme = {
@@ -4911,7 +4911,7 @@ function requireCliWidth () {
 	  const defaultOpts = {
 	    defaultWidth: 0,
 	    output: process.stdout,
-	    tty: require$$0$4,
+	    tty: require$$0$5,
 	  };
 
 	  if (!options) {
@@ -4958,16 +4958,16 @@ function requireCliWidth () {
 var cliWidthExports = requireCliWidth();
 var cliWidth = /*@__PURE__*/getDefaultExportFromCjs(cliWidthExports);
 
-var stringWidth$1 = {exports: {}};
+var stringWidth$2 = {exports: {}};
 
-var ansiRegex$1;
+var ansiRegex$2;
 var hasRequiredAnsiRegex$1;
 
 function requireAnsiRegex$1 () {
-	if (hasRequiredAnsiRegex$1) return ansiRegex$1;
+	if (hasRequiredAnsiRegex$1) return ansiRegex$2;
 	hasRequiredAnsiRegex$1 = 1;
 
-	ansiRegex$1 = ({onlyFirst = false} = {}) => {
+	ansiRegex$2 = ({onlyFirst = false} = {}) => {
 		const pattern = [
 			'[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]+)*|[a-zA-Z\\d]+(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)',
 			'(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-ntqry=><~]))'
@@ -4975,19 +4975,19 @@ function requireAnsiRegex$1 () {
 
 		return new RegExp(pattern, onlyFirst ? undefined : 'g');
 	};
-	return ansiRegex$1;
+	return ansiRegex$2;
 }
 
-var stripAnsi$2;
+var stripAnsi$3;
 var hasRequiredStripAnsi$1;
 
 function requireStripAnsi$1 () {
-	if (hasRequiredStripAnsi$1) return stripAnsi$2;
+	if (hasRequiredStripAnsi$1) return stripAnsi$3;
 	hasRequiredStripAnsi$1 = 1;
 	const ansiRegex = requireAnsiRegex$1();
 
-	stripAnsi$2 = string => typeof string === 'string' ? string.replace(ansiRegex(), '') : string;
-	return stripAnsi$2;
+	stripAnsi$3 = string => typeof string === 'string' ? string.replace(ansiRegex(), '') : string;
+	return stripAnsi$3;
 }
 
 var isFullwidthCodePoint$1 = {exports: {}};
@@ -5050,24 +5050,24 @@ function requireIsFullwidthCodePoint$1 () {
 	return isFullwidthCodePoint$1.exports;
 }
 
-var emojiRegex;
+var emojiRegex$1;
 var hasRequiredEmojiRegex;
 
 function requireEmojiRegex () {
-	if (hasRequiredEmojiRegex) return emojiRegex;
+	if (hasRequiredEmojiRegex) return emojiRegex$1;
 	hasRequiredEmojiRegex = 1;
 
-	emojiRegex = function () {
+	emojiRegex$1 = function () {
 	  // https://mths.be/emoji
 	  return /\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62(?:\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67|\uDB40\uDC73\uDB40\uDC63\uDB40\uDC74|\uDB40\uDC77\uDB40\uDC6C\uDB40\uDC73)\uDB40\uDC7F|\uD83D\uDC68(?:\uD83C\uDFFC\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68\uD83C\uDFFB|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFF\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFB-\uDFFE])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFE\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFB-\uDFFD])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFD\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFB\uDFFC])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\u200D(?:\u2764\uFE0F\u200D(?:\uD83D\uDC8B\u200D)?\uD83D\uDC68|(?:\uD83D[\uDC68\uDC69])\u200D(?:\uD83D\uDC66\u200D\uD83D\uDC66|\uD83D\uDC67\u200D(?:\uD83D[\uDC66\uDC67]))|\uD83D\uDC66\u200D\uD83D\uDC66|\uD83D\uDC67\u200D(?:\uD83D[\uDC66\uDC67])|(?:\uD83D[\uDC68\uDC69])\u200D(?:\uD83D[\uDC66\uDC67])|[\u2695\u2696\u2708]\uFE0F|\uD83D[\uDC66\uDC67]|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|(?:\uD83C\uDFFB\u200D[\u2695\u2696\u2708]|\uD83C\uDFFF\u200D[\u2695\u2696\u2708]|\uD83C\uDFFE\u200D[\u2695\u2696\u2708]|\uD83C\uDFFD\u200D[\u2695\u2696\u2708]|\uD83C\uDFFC\u200D[\u2695\u2696\u2708])\uFE0F|\uD83C\uDFFB\u200D(?:\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C[\uDFFB-\uDFFF])|(?:\uD83E\uDDD1\uD83C\uDFFB\u200D\uD83E\uDD1D\u200D\uD83E\uDDD1|\uD83D\uDC69\uD83C\uDFFC\u200D\uD83E\uDD1D\u200D\uD83D\uDC69)\uD83C\uDFFB|\uD83E\uDDD1(?:\uD83C\uDFFF\u200D\uD83E\uDD1D\u200D\uD83E\uDDD1(?:\uD83C[\uDFFB-\uDFFF])|\u200D\uD83E\uDD1D\u200D\uD83E\uDDD1)|(?:\uD83E\uDDD1\uD83C\uDFFE\u200D\uD83E\uDD1D\u200D\uD83E\uDDD1|\uD83D\uDC69\uD83C\uDFFF\u200D\uD83E\uDD1D\u200D(?:\uD83D[\uDC68\uDC69]))(?:\uD83C[\uDFFB-\uDFFE])|(?:\uD83E\uDDD1\uD83C\uDFFC\u200D\uD83E\uDD1D\u200D\uD83E\uDDD1|\uD83D\uDC69\uD83C\uDFFD\u200D\uD83E\uDD1D\u200D\uD83D\uDC69)(?:\uD83C[\uDFFB\uDFFC])|\uD83D\uDC69(?:\uD83C\uDFFE\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFB-\uDFFD\uDFFF])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFC\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFB\uDFFD-\uDFFF])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFB\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFC-\uDFFF])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFD\u200D(?:\uD83E\uDD1D\u200D\uD83D\uDC68(?:\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\u200D(?:\u2764\uFE0F\u200D(?:\uD83D\uDC8B\u200D(?:\uD83D[\uDC68\uDC69])|\uD83D[\uDC68\uDC69])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C\uDFFF\u200D(?:\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD]))|\uD83D\uDC69\u200D\uD83D\uDC69\u200D(?:\uD83D\uDC66\u200D\uD83D\uDC66|\uD83D\uDC67\u200D(?:\uD83D[\uDC66\uDC67]))|(?:\uD83E\uDDD1\uD83C\uDFFD\u200D\uD83E\uDD1D\u200D\uD83E\uDDD1|\uD83D\uDC69\uD83C\uDFFE\u200D\uD83E\uDD1D\u200D\uD83D\uDC69)(?:\uD83C[\uDFFB-\uDFFD])|\uD83D\uDC69\u200D\uD83D\uDC66\u200D\uD83D\uDC66|\uD83D\uDC69\u200D\uD83D\uDC69\u200D(?:\uD83D[\uDC66\uDC67])|(?:\uD83D\uDC41\uFE0F\u200D\uD83D\uDDE8|\uD83D\uDC69(?:\uD83C\uDFFF\u200D[\u2695\u2696\u2708]|\uD83C\uDFFE\u200D[\u2695\u2696\u2708]|\uD83C\uDFFC\u200D[\u2695\u2696\u2708]|\uD83C\uDFFB\u200D[\u2695\u2696\u2708]|\uD83C\uDFFD\u200D[\u2695\u2696\u2708]|\u200D[\u2695\u2696\u2708])|(?:(?:\u26F9|\uD83C[\uDFCB\uDFCC]|\uD83D\uDD75)\uFE0F|\uD83D\uDC6F|\uD83E[\uDD3C\uDDDE\uDDDF])\u200D[\u2640\u2642]|(?:\u26F9|\uD83C[\uDFCB\uDFCC]|\uD83D\uDD75)(?:\uD83C[\uDFFB-\uDFFF])\u200D[\u2640\u2642]|(?:\uD83C[\uDFC3\uDFC4\uDFCA]|\uD83D[\uDC6E\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4-\uDEB6]|\uD83E[\uDD26\uDD37-\uDD39\uDD3D\uDD3E\uDDB8\uDDB9\uDDCD-\uDDCF\uDDD6-\uDDDD])(?:(?:\uD83C[\uDFFB-\uDFFF])\u200D[\u2640\u2642]|\u200D[\u2640\u2642])|\uD83C\uDFF4\u200D\u2620)\uFE0F|\uD83D\uDC69\u200D\uD83D\uDC67\u200D(?:\uD83D[\uDC66\uDC67])|\uD83C\uDFF3\uFE0F\u200D\uD83C\uDF08|\uD83D\uDC15\u200D\uD83E\uDDBA|\uD83D\uDC69\u200D\uD83D\uDC66|\uD83D\uDC69\u200D\uD83D\uDC67|\uD83C\uDDFD\uD83C\uDDF0|\uD83C\uDDF4\uD83C\uDDF2|\uD83C\uDDF6\uD83C\uDDE6|[#\*0-9]\uFE0F\u20E3|\uD83C\uDDE7(?:\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEF\uDDF1-\uDDF4\uDDF6-\uDDF9\uDDFB\uDDFC\uDDFE\uDDFF])|\uD83C\uDDF9(?:\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDED\uDDEF-\uDDF4\uDDF7\uDDF9\uDDFB\uDDFC\uDDFF])|\uD83C\uDDEA(?:\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDED\uDDF7-\uDDFA])|\uD83E\uDDD1(?:\uD83C[\uDFFB-\uDFFF])|\uD83C\uDDF7(?:\uD83C[\uDDEA\uDDF4\uDDF8\uDDFA\uDDFC])|\uD83D\uDC69(?:\uD83C[\uDFFB-\uDFFF])|\uD83C\uDDF2(?:\uD83C[\uDDE6\uDDE8-\uDDED\uDDF0-\uDDFF])|\uD83C\uDDE6(?:\uD83C[\uDDE8-\uDDEC\uDDEE\uDDF1\uDDF2\uDDF4\uDDF6-\uDDFA\uDDFC\uDDFD\uDDFF])|\uD83C\uDDF0(?:\uD83C[\uDDEA\uDDEC-\uDDEE\uDDF2\uDDF3\uDDF5\uDDF7\uDDFC\uDDFE\uDDFF])|\uD83C\uDDED(?:\uD83C[\uDDF0\uDDF2\uDDF3\uDDF7\uDDF9\uDDFA])|\uD83C\uDDE9(?:\uD83C[\uDDEA\uDDEC\uDDEF\uDDF0\uDDF2\uDDF4\uDDFF])|\uD83C\uDDFE(?:\uD83C[\uDDEA\uDDF9])|\uD83C\uDDEC(?:\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEE\uDDF1-\uDDF3\uDDF5-\uDDFA\uDDFC\uDDFE])|\uD83C\uDDF8(?:\uD83C[\uDDE6-\uDDEA\uDDEC-\uDDF4\uDDF7-\uDDF9\uDDFB\uDDFD-\uDDFF])|\uD83C\uDDEB(?:\uD83C[\uDDEE-\uDDF0\uDDF2\uDDF4\uDDF7])|\uD83C\uDDF5(?:\uD83C[\uDDE6\uDDEA-\uDDED\uDDF0-\uDDF3\uDDF7-\uDDF9\uDDFC\uDDFE])|\uD83C\uDDFB(?:\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDEE\uDDF3\uDDFA])|\uD83C\uDDF3(?:\uD83C[\uDDE6\uDDE8\uDDEA-\uDDEC\uDDEE\uDDF1\uDDF4\uDDF5\uDDF7\uDDFA\uDDFF])|\uD83C\uDDE8(?:\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDEE\uDDF0-\uDDF5\uDDF7\uDDFA-\uDDFF])|\uD83C\uDDF1(?:\uD83C[\uDDE6-\uDDE8\uDDEE\uDDF0\uDDF7-\uDDFB\uDDFE])|\uD83C\uDDFF(?:\uD83C[\uDDE6\uDDF2\uDDFC])|\uD83C\uDDFC(?:\uD83C[\uDDEB\uDDF8])|\uD83C\uDDFA(?:\uD83C[\uDDE6\uDDEC\uDDF2\uDDF3\uDDF8\uDDFE\uDDFF])|\uD83C\uDDEE(?:\uD83C[\uDDE8-\uDDEA\uDDF1-\uDDF4\uDDF6-\uDDF9])|\uD83C\uDDEF(?:\uD83C[\uDDEA\uDDF2\uDDF4\uDDF5])|(?:\uD83C[\uDFC3\uDFC4\uDFCA]|\uD83D[\uDC6E\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4-\uDEB6]|\uD83E[\uDD26\uDD37-\uDD39\uDD3D\uDD3E\uDDB8\uDDB9\uDDCD-\uDDCF\uDDD6-\uDDDD])(?:\uD83C[\uDFFB-\uDFFF])|(?:\u26F9|\uD83C[\uDFCB\uDFCC]|\uD83D\uDD75)(?:\uD83C[\uDFFB-\uDFFF])|(?:[\u261D\u270A-\u270D]|\uD83C[\uDF85\uDFC2\uDFC7]|\uD83D[\uDC42\uDC43\uDC46-\uDC50\uDC66\uDC67\uDC6B-\uDC6D\uDC70\uDC72\uDC74-\uDC76\uDC78\uDC7C\uDC83\uDC85\uDCAA\uDD74\uDD7A\uDD90\uDD95\uDD96\uDE4C\uDE4F\uDEC0\uDECC]|\uD83E[\uDD0F\uDD18-\uDD1C\uDD1E\uDD1F\uDD30-\uDD36\uDDB5\uDDB6\uDDBB\uDDD2-\uDDD5])(?:\uD83C[\uDFFB-\uDFFF])|(?:[\u231A\u231B\u23E9-\u23EC\u23F0\u23F3\u25FD\u25FE\u2614\u2615\u2648-\u2653\u267F\u2693\u26A1\u26AA\u26AB\u26BD\u26BE\u26C4\u26C5\u26CE\u26D4\u26EA\u26F2\u26F3\u26F5\u26FA\u26FD\u2705\u270A\u270B\u2728\u274C\u274E\u2753-\u2755\u2757\u2795-\u2797\u27B0\u27BF\u2B1B\u2B1C\u2B50\u2B55]|\uD83C[\uDC04\uDCCF\uDD8E\uDD91-\uDD9A\uDDE6-\uDDFF\uDE01\uDE1A\uDE2F\uDE32-\uDE36\uDE38-\uDE3A\uDE50\uDE51\uDF00-\uDF20\uDF2D-\uDF35\uDF37-\uDF7C\uDF7E-\uDF93\uDFA0-\uDFCA\uDFCF-\uDFD3\uDFE0-\uDFF0\uDFF4\uDFF8-\uDFFF]|\uD83D[\uDC00-\uDC3E\uDC40\uDC42-\uDCFC\uDCFF-\uDD3D\uDD4B-\uDD4E\uDD50-\uDD67\uDD7A\uDD95\uDD96\uDDA4\uDDFB-\uDE4F\uDE80-\uDEC5\uDECC\uDED0-\uDED2\uDED5\uDEEB\uDEEC\uDEF4-\uDEFA\uDFE0-\uDFEB]|\uD83E[\uDD0D-\uDD3A\uDD3C-\uDD45\uDD47-\uDD71\uDD73-\uDD76\uDD7A-\uDDA2\uDDA5-\uDDAA\uDDAE-\uDDCA\uDDCD-\uDDFF\uDE70-\uDE73\uDE78-\uDE7A\uDE80-\uDE82\uDE90-\uDE95])|(?:[#\*0-9\xA9\xAE\u203C\u2049\u2122\u2139\u2194-\u2199\u21A9\u21AA\u231A\u231B\u2328\u23CF\u23E9-\u23F3\u23F8-\u23FA\u24C2\u25AA\u25AB\u25B6\u25C0\u25FB-\u25FE\u2600-\u2604\u260E\u2611\u2614\u2615\u2618\u261D\u2620\u2622\u2623\u2626\u262A\u262E\u262F\u2638-\u263A\u2640\u2642\u2648-\u2653\u265F\u2660\u2663\u2665\u2666\u2668\u267B\u267E\u267F\u2692-\u2697\u2699\u269B\u269C\u26A0\u26A1\u26AA\u26AB\u26B0\u26B1\u26BD\u26BE\u26C4\u26C5\u26C8\u26CE\u26CF\u26D1\u26D3\u26D4\u26E9\u26EA\u26F0-\u26F5\u26F7-\u26FA\u26FD\u2702\u2705\u2708-\u270D\u270F\u2712\u2714\u2716\u271D\u2721\u2728\u2733\u2734\u2744\u2747\u274C\u274E\u2753-\u2755\u2757\u2763\u2764\u2795-\u2797\u27A1\u27B0\u27BF\u2934\u2935\u2B05-\u2B07\u2B1B\u2B1C\u2B50\u2B55\u3030\u303D\u3297\u3299]|\uD83C[\uDC04\uDCCF\uDD70\uDD71\uDD7E\uDD7F\uDD8E\uDD91-\uDD9A\uDDE6-\uDDFF\uDE01\uDE02\uDE1A\uDE2F\uDE32-\uDE3A\uDE50\uDE51\uDF00-\uDF21\uDF24-\uDF93\uDF96\uDF97\uDF99-\uDF9B\uDF9E-\uDFF0\uDFF3-\uDFF5\uDFF7-\uDFFF]|\uD83D[\uDC00-\uDCFD\uDCFF-\uDD3D\uDD49-\uDD4E\uDD50-\uDD67\uDD6F\uDD70\uDD73-\uDD7A\uDD87\uDD8A-\uDD8D\uDD90\uDD95\uDD96\uDDA4\uDDA5\uDDA8\uDDB1\uDDB2\uDDBC\uDDC2-\uDDC4\uDDD1-\uDDD3\uDDDC-\uDDDE\uDDE1\uDDE3\uDDE8\uDDEF\uDDF3\uDDFA-\uDE4F\uDE80-\uDEC5\uDECB-\uDED2\uDED5\uDEE0-\uDEE5\uDEE9\uDEEB\uDEEC\uDEF0\uDEF3-\uDEFA\uDFE0-\uDFEB]|\uD83E[\uDD0D-\uDD3A\uDD3C-\uDD45\uDD47-\uDD71\uDD73-\uDD76\uDD7A-\uDDA2\uDDA5-\uDDAA\uDDAE-\uDDCA\uDDCD-\uDDFF\uDE70-\uDE73\uDE78-\uDE7A\uDE80-\uDE82\uDE90-\uDE95])\uFE0F|(?:[\u261D\u26F9\u270A-\u270D]|\uD83C[\uDF85\uDFC2-\uDFC4\uDFC7\uDFCA-\uDFCC]|\uD83D[\uDC42\uDC43\uDC46-\uDC50\uDC66-\uDC78\uDC7C\uDC81-\uDC83\uDC85-\uDC87\uDC8F\uDC91\uDCAA\uDD74\uDD75\uDD7A\uDD90\uDD95\uDD96\uDE45-\uDE47\uDE4B-\uDE4F\uDEA3\uDEB4-\uDEB6\uDEC0\uDECC]|\uD83E[\uDD0F\uDD18-\uDD1F\uDD26\uDD30-\uDD39\uDD3C-\uDD3E\uDDB5\uDDB6\uDDB8\uDDB9\uDDBB\uDDCD-\uDDCF\uDDD1-\uDDDD])/g;
 	};
-	return emojiRegex;
+	return emojiRegex$1;
 }
 
 var hasRequiredStringWidth$1;
 
 function requireStringWidth$1 () {
-	if (hasRequiredStringWidth$1) return stringWidth$1.exports;
+	if (hasRequiredStringWidth$1) return stringWidth$2.exports;
 	hasRequiredStringWidth$1 = 1;
 	const stripAnsi = requireStripAnsi$1();
 	const isFullwidthCodePoint = requireIsFullwidthCodePoint$1();
@@ -5112,13 +5112,13 @@ function requireStringWidth$1 () {
 		return width;
 	};
 
-	stringWidth$1.exports = stringWidth;
+	stringWidth$2.exports = stringWidth;
 	// TODO: remove this in the next major version
-	stringWidth$1.exports.default = stringWidth;
-	return stringWidth$1.exports;
+	stringWidth$2.exports.default = stringWidth;
+	return stringWidth$2.exports;
 }
 
-var ansiStyles$1 = {exports: {}};
+var ansiStyles$2 = {exports: {}};
 
 var colorName$1;
 var hasRequiredColorName$1;
@@ -6324,12 +6324,12 @@ function requireColorConvert$1 () {
 	return colorConvert$1;
 }
 
-ansiStyles$1.exports;
+ansiStyles$2.exports;
 
 var hasRequiredAnsiStyles$1;
 
 function requireAnsiStyles$1 () {
-	if (hasRequiredAnsiStyles$1) return ansiStyles$1.exports;
+	if (hasRequiredAnsiStyles$1) return ansiStyles$2.exports;
 	hasRequiredAnsiStyles$1 = 1;
 	(function (module) {
 
@@ -6494,8 +6494,8 @@ function requireAnsiStyles$1 () {
 			enumerable: true,
 			get: assembleStyles
 		}); 
-	} (ansiStyles$1));
-	return ansiStyles$1.exports;
+	} (ansiStyles$2));
+	return ansiStyles$2.exports;
 }
 
 var wrapAnsi_1$1;
@@ -7299,7 +7299,7 @@ load,
 unload, } = signalExitWrap(processOk(process$1) ? new SignalExit(process$1) : new SignalExitFallback());
 
 var stripAnsiExports = requireStripAnsi$1();
-var stripAnsi$1 = /*@__PURE__*/getDefaultExportFromCjs(stripAnsiExports);
+var stripAnsi$2 = /*@__PURE__*/getDefaultExportFromCjs(stripAnsiExports);
 
 var ansiEscapes$2 = {exports: {}};
 
@@ -7496,7 +7496,7 @@ class ScreenManager {
     render(content, bottomContent = '') {
         // Write message to screen and setPrompt to control backspace
         const promptLine = lastLine(content);
-        const rawPromptLine = stripAnsi$1(promptLine);
+        const rawPromptLine = stripAnsi$2(promptLine);
         // Remove the rl.line from our prompt. We can't rely on the content of
         // rl.line (mainly because of the password prompt), so just rely on it's
         // length.
@@ -8697,7 +8697,7 @@ var hasRequiredSupportsColor$1;
 function requireSupportsColor$1 () {
 	if (hasRequiredSupportsColor$1) return supportsColor_1$1;
 	hasRequiredSupportsColor$1 = 1;
-	const os = require$$0$5;
+	const os = require$$0$6;
 	const hasFlag = requireHasFlag$1();
 
 	const env = process.env;
@@ -8840,8 +8840,8 @@ function requireNode () {
 	if (hasRequiredNode) return node.exports;
 	hasRequiredNode = 1;
 	(function (module, exports) {
-		const tty = require$$0$4;
-		const util = require$$0$6;
+		const tty = require$$0$5;
+		const util = require$$0$7;
 
 		/**
 		 * This is the Node.js implementation of `debug()`.
@@ -9131,7 +9131,7 @@ function requireSrc$1 () {
 		    return (mod && mod.__esModule) ? mod : { "default": mod };
 		};
 		Object.defineProperty(exports, "__esModule", { value: true });
-		const fs_1 = require$$0$7;
+		const fs_1 = require$$0$8;
 		const debug_1 = __importDefault(requireSrc$2());
 		const log = debug_1.default('@kwsites/file-exists');
 		function check(path, isFile, isDirectory) {
@@ -13661,7 +13661,7 @@ init_utils();
 var PluginStore = class {
   constructor() {
     this.plugins = /* @__PURE__ */ new Set();
-    this.events = new require$$0$2.EventEmitter();
+    this.events = new require$$0$3.EventEmitter();
   }
   on(type, listener) {
     this.events.on(type, listener);
@@ -13852,7 +13852,7 @@ init_git_response_error();
 // src/esm.mjs
 var simpleGit = gitInstanceFactory;
 
-var dots = {
+var dots$1 = {
 	interval: 80,
 	frames: [
 		"⠋",
@@ -13867,7 +13867,7 @@ var dots = {
 		"⠏"
 	]
 };
-var dots2 = {
+var dots2$1 = {
 	interval: 80,
 	frames: [
 		"⣾",
@@ -13880,7 +13880,7 @@ var dots2 = {
 		"⣷"
 	]
 };
-var dots3 = {
+var dots3$1 = {
 	interval: 80,
 	frames: [
 		"⠋",
@@ -13895,7 +13895,7 @@ var dots3 = {
 		"⠓"
 	]
 };
-var dots4 = {
+var dots4$1 = {
 	interval: 80,
 	frames: [
 		"⠄",
@@ -13914,7 +13914,7 @@ var dots4 = {
 		"⠆"
 	]
 };
-var dots5 = {
+var dots5$1 = {
 	interval: 80,
 	frames: [
 		"⠋",
@@ -13936,7 +13936,7 @@ var dots5 = {
 		"⠋"
 	]
 };
-var dots6 = {
+var dots6$1 = {
 	interval: 80,
 	frames: [
 		"⠁",
@@ -13965,7 +13965,7 @@ var dots6 = {
 		"⠁"
 	]
 };
-var dots7 = {
+var dots7$1 = {
 	interval: 80,
 	frames: [
 		"⠈",
@@ -13994,7 +13994,7 @@ var dots7 = {
 		"⠈"
 	]
 };
-var dots8 = {
+var dots8$1 = {
 	interval: 80,
 	frames: [
 		"⠁",
@@ -14028,7 +14028,7 @@ var dots8 = {
 		"⠈"
 	]
 };
-var dots9 = {
+var dots9$1 = {
 	interval: 80,
 	frames: [
 		"⢹",
@@ -14041,7 +14041,7 @@ var dots9 = {
 		"⡏"
 	]
 };
-var dots10 = {
+var dots10$1 = {
 	interval: 80,
 	frames: [
 		"⢄",
@@ -14053,7 +14053,7 @@ var dots10 = {
 		"⡠"
 	]
 };
-var dots11 = {
+var dots11$1 = {
 	interval: 100,
 	frames: [
 		"⠁",
@@ -14066,7 +14066,7 @@ var dots11 = {
 		"⠈"
 	]
 };
-var dots12 = {
+var dots12$1 = {
 	interval: 80,
 	frames: [
 		"⢀⠀",
@@ -14127,7 +14127,7 @@ var dots12 = {
 		"⠀⡀"
 	]
 };
-var line = {
+var line$1 = {
 	interval: 130,
 	frames: [
 		"-",
@@ -14136,7 +14136,7 @@ var line = {
 		"/"
 	]
 };
-var line2 = {
+var line2$1 = {
 	interval: 100,
 	frames: [
 		"⠂",
@@ -14147,7 +14147,7 @@ var line2 = {
 		"-"
 	]
 };
-var pipe = {
+var pipe$1 = {
 	interval: 100,
 	frames: [
 		"┤",
@@ -14160,7 +14160,7 @@ var pipe = {
 		"┐"
 	]
 };
-var simpleDots = {
+var simpleDots$1 = {
 	interval: 400,
 	frames: [
 		".  ",
@@ -14169,7 +14169,7 @@ var simpleDots = {
 		"   "
 	]
 };
-var simpleDotsScrolling = {
+var simpleDotsScrolling$1 = {
 	interval: 200,
 	frames: [
 		".  ",
@@ -14180,7 +14180,7 @@ var simpleDotsScrolling = {
 		"   "
 	]
 };
-var star = {
+var star$1 = {
 	interval: 70,
 	frames: [
 		"✶",
@@ -14191,7 +14191,7 @@ var star = {
 		"✷"
 	]
 };
-var star2 = {
+var star2$1 = {
 	interval: 80,
 	frames: [
 		"+",
@@ -14199,7 +14199,7 @@ var star2 = {
 		"*"
 	]
 };
-var flip = {
+var flip$1 = {
 	interval: 70,
 	frames: [
 		"_",
@@ -14216,7 +14216,7 @@ var flip = {
 		"_"
 	]
 };
-var hamburger = {
+var hamburger$1 = {
 	interval: 100,
 	frames: [
 		"☱",
@@ -14224,7 +14224,7 @@ var hamburger = {
 		"☴"
 	]
 };
-var growVertical = {
+var growVertical$1 = {
 	interval: 120,
 	frames: [
 		"▁",
@@ -14239,7 +14239,7 @@ var growVertical = {
 		"▃"
 	]
 };
-var growHorizontal = {
+var growHorizontal$1 = {
 	interval: 120,
 	frames: [
 		"▏",
@@ -14256,7 +14256,7 @@ var growHorizontal = {
 		"▎"
 	]
 };
-var balloon = {
+var balloon$1 = {
 	interval: 140,
 	frames: [
 		" ",
@@ -14268,7 +14268,7 @@ var balloon = {
 		" "
 	]
 };
-var balloon2 = {
+var balloon2$1 = {
 	interval: 120,
 	frames: [
 		".",
@@ -14280,7 +14280,7 @@ var balloon2 = {
 		"."
 	]
 };
-var noise = {
+var noise$1 = {
 	interval: 100,
 	frames: [
 		"▓",
@@ -14288,7 +14288,7 @@ var noise = {
 		"░"
 	]
 };
-var bounce = {
+var bounce$1 = {
 	interval: 120,
 	frames: [
 		"⠁",
@@ -14297,7 +14297,7 @@ var bounce = {
 		"⠂"
 	]
 };
-var boxBounce = {
+var boxBounce$1 = {
 	interval: 120,
 	frames: [
 		"▖",
@@ -14306,7 +14306,7 @@ var boxBounce = {
 		"▗"
 	]
 };
-var boxBounce2 = {
+var boxBounce2$1 = {
 	interval: 100,
 	frames: [
 		"▌",
@@ -14315,7 +14315,7 @@ var boxBounce2 = {
 		"▄"
 	]
 };
-var triangle = {
+var triangle$1 = {
 	interval: 50,
 	frames: [
 		"◢",
@@ -14324,7 +14324,7 @@ var triangle = {
 		"◥"
 	]
 };
-var arc = {
+var arc$1 = {
 	interval: 100,
 	frames: [
 		"◜",
@@ -14335,7 +14335,7 @@ var arc = {
 		"◟"
 	]
 };
-var circle = {
+var circle$1 = {
 	interval: 120,
 	frames: [
 		"◡",
@@ -14343,7 +14343,7 @@ var circle = {
 		"◠"
 	]
 };
-var squareCorners = {
+var squareCorners$1 = {
 	interval: 180,
 	frames: [
 		"◰",
@@ -14352,7 +14352,7 @@ var squareCorners = {
 		"◱"
 	]
 };
-var circleQuarters = {
+var circleQuarters$1 = {
 	interval: 120,
 	frames: [
 		"◴",
@@ -14361,7 +14361,7 @@ var circleQuarters = {
 		"◵"
 	]
 };
-var circleHalves = {
+var circleHalves$1 = {
 	interval: 50,
 	frames: [
 		"◐",
@@ -14370,35 +14370,35 @@ var circleHalves = {
 		"◒"
 	]
 };
-var squish = {
+var squish$1 = {
 	interval: 100,
 	frames: [
 		"╫",
 		"╪"
 	]
 };
-var toggle = {
+var toggle$1 = {
 	interval: 250,
 	frames: [
 		"⊶",
 		"⊷"
 	]
 };
-var toggle2 = {
+var toggle2$1 = {
 	interval: 80,
 	frames: [
 		"▫",
 		"▪"
 	]
 };
-var toggle3 = {
+var toggle3$1 = {
 	interval: 120,
 	frames: [
 		"□",
 		"■"
 	]
 };
-var toggle4 = {
+var toggle4$1 = {
 	interval: 100,
 	frames: [
 		"■",
@@ -14407,42 +14407,42 @@ var toggle4 = {
 		"▫"
 	]
 };
-var toggle5 = {
+var toggle5$1 = {
 	interval: 100,
 	frames: [
 		"▮",
 		"▯"
 	]
 };
-var toggle6 = {
+var toggle6$1 = {
 	interval: 300,
 	frames: [
 		"ဝ",
 		"၀"
 	]
 };
-var toggle7 = {
+var toggle7$1 = {
 	interval: 80,
 	frames: [
 		"⦾",
 		"⦿"
 	]
 };
-var toggle8 = {
+var toggle8$1 = {
 	interval: 100,
 	frames: [
 		"◍",
 		"◌"
 	]
 };
-var toggle9 = {
+var toggle9$1 = {
 	interval: 100,
 	frames: [
 		"◉",
 		"◎"
 	]
 };
-var toggle10 = {
+var toggle10$1 = {
 	interval: 100,
 	frames: [
 		"㊂",
@@ -14450,21 +14450,21 @@ var toggle10 = {
 		"㊁"
 	]
 };
-var toggle11 = {
+var toggle11$1 = {
 	interval: 50,
 	frames: [
 		"⧇",
 		"⧆"
 	]
 };
-var toggle12 = {
+var toggle12$1 = {
 	interval: 120,
 	frames: [
 		"☗",
 		"☖"
 	]
 };
-var toggle13 = {
+var toggle13$1 = {
 	interval: 80,
 	frames: [
 		"=",
@@ -14472,7 +14472,7 @@ var toggle13 = {
 		"-"
 	]
 };
-var arrow = {
+var arrow$1 = {
 	interval: 100,
 	frames: [
 		"←",
@@ -14485,7 +14485,7 @@ var arrow = {
 		"↙"
 	]
 };
-var arrow2 = {
+var arrow2$1 = {
 	interval: 80,
 	frames: [
 		"⬆️ ",
@@ -14498,7 +14498,7 @@ var arrow2 = {
 		"↖️ "
 	]
 };
-var arrow3 = {
+var arrow3$1 = {
 	interval: 120,
 	frames: [
 		"▹▹▹▹▹",
@@ -14509,7 +14509,7 @@ var arrow3 = {
 		"▹▹▹▹▸"
 	]
 };
-var bouncingBar = {
+var bouncingBar$1 = {
 	interval: 80,
 	frames: [
 		"[    ]",
@@ -14529,7 +14529,7 @@ var bouncingBar = {
 		"[=   ]"
 	]
 };
-var bouncingBall = {
+var bouncingBall$1 = {
 	interval: 80,
 	frames: [
 		"( ●    )",
@@ -14544,14 +14544,14 @@ var bouncingBall = {
 		"(●     )"
 	]
 };
-var smiley = {
+var smiley$1 = {
 	interval: 200,
 	frames: [
 		"😄 ",
 		"😝 "
 	]
 };
-var monkey = {
+var monkey$1 = {
 	interval: 300,
 	frames: [
 		"🙈 ",
@@ -14560,7 +14560,7 @@ var monkey = {
 		"🙊 "
 	]
 };
-var hearts = {
+var hearts$1 = {
 	interval: 100,
 	frames: [
 		"💛 ",
@@ -14570,7 +14570,7 @@ var hearts = {
 		"❤️ "
 	]
 };
-var clock = {
+var clock$1 = {
 	interval: 100,
 	frames: [
 		"🕛 ",
@@ -14587,7 +14587,7 @@ var clock = {
 		"🕚 "
 	]
 };
-var earth = {
+var earth$1 = {
 	interval: 180,
 	frames: [
 		"🌍 ",
@@ -14595,7 +14595,7 @@ var earth = {
 		"🌏 "
 	]
 };
-var moon = {
+var moon$1 = {
 	interval: 80,
 	frames: [
 		"🌑 ",
@@ -14608,14 +14608,14 @@ var moon = {
 		"🌘 "
 	]
 };
-var runner = {
+var runner$1 = {
 	interval: 140,
 	frames: [
 		"🚶 ",
 		"🏃 "
 	]
 };
-var pong = {
+var pong$1 = {
 	interval: 80,
 	frames: [
 		"▐⠂       ▌",
@@ -14650,7 +14650,7 @@ var pong = {
 		"▐⠠       ▌"
 	]
 };
-var shark = {
+var shark$1 = {
 	interval: 120,
 	frames: [
 		"▐|\\____________▌",
@@ -14681,7 +14681,7 @@ var shark = {
 		"▐/|____________▌"
 	]
 };
-var dqpb = {
+var dqpb$1 = {
 	interval: 100,
 	frames: [
 		"d",
@@ -14690,7 +14690,7 @@ var dqpb = {
 		"b"
 	]
 };
-var weather = {
+var weather$1 = {
 	interval: 100,
 	frames: [
 		"☀️ ",
@@ -14718,14 +14718,14 @@ var weather = {
 		"☀️ "
 	]
 };
-var christmas = {
+var christmas$1 = {
 	interval: 400,
 	frames: [
 		"🌲",
 		"🎄"
 	]
 };
-var grenade = {
+var grenade$1 = {
 	interval: 80,
 	frames: [
 		"،   ",
@@ -14744,7 +14744,7 @@ var grenade = {
 		"   "
 	]
 };
-var point = {
+var point$1 = {
 	interval: 125,
 	frames: [
 		"∙∙∙",
@@ -14754,7 +14754,7 @@ var point = {
 		"∙∙∙"
 	]
 };
-var layer = {
+var layer$1 = {
 	interval: 150,
 	frames: [
 		"-",
@@ -14762,86 +14762,86 @@ var layer = {
 		"≡"
 	]
 };
-var require$$0$1 = {
-	dots: dots,
-	dots2: dots2,
-	dots3: dots3,
-	dots4: dots4,
-	dots5: dots5,
-	dots6: dots6,
-	dots7: dots7,
-	dots8: dots8,
-	dots9: dots9,
-	dots10: dots10,
-	dots11: dots11,
-	dots12: dots12,
-	line: line,
-	line2: line2,
-	pipe: pipe,
-	simpleDots: simpleDots,
-	simpleDotsScrolling: simpleDotsScrolling,
-	star: star,
-	star2: star2,
-	flip: flip,
-	hamburger: hamburger,
-	growVertical: growVertical,
-	growHorizontal: growHorizontal,
-	balloon: balloon,
-	balloon2: balloon2,
-	noise: noise,
-	bounce: bounce,
-	boxBounce: boxBounce,
-	boxBounce2: boxBounce2,
-	triangle: triangle,
-	arc: arc,
-	circle: circle,
-	squareCorners: squareCorners,
-	circleQuarters: circleQuarters,
-	circleHalves: circleHalves,
-	squish: squish,
-	toggle: toggle,
-	toggle2: toggle2,
-	toggle3: toggle3,
-	toggle4: toggle4,
-	toggle5: toggle5,
-	toggle6: toggle6,
-	toggle7: toggle7,
-	toggle8: toggle8,
-	toggle9: toggle9,
-	toggle10: toggle10,
-	toggle11: toggle11,
-	toggle12: toggle12,
-	toggle13: toggle13,
-	arrow: arrow,
-	arrow2: arrow2,
-	arrow3: arrow3,
-	bouncingBar: bouncingBar,
-	bouncingBall: bouncingBall,
-	smiley: smiley,
-	monkey: monkey,
-	hearts: hearts,
-	clock: clock,
-	earth: earth,
-	moon: moon,
-	runner: runner,
-	pong: pong,
-	shark: shark,
-	dqpb: dqpb,
-	weather: weather,
-	christmas: christmas,
-	grenade: grenade,
-	point: point,
-	layer: layer
+var require$$0$2 = {
+	dots: dots$1,
+	dots2: dots2$1,
+	dots3: dots3$1,
+	dots4: dots4$1,
+	dots5: dots5$1,
+	dots6: dots6$1,
+	dots7: dots7$1,
+	dots8: dots8$1,
+	dots9: dots9$1,
+	dots10: dots10$1,
+	dots11: dots11$1,
+	dots12: dots12$1,
+	line: line$1,
+	line2: line2$1,
+	pipe: pipe$1,
+	simpleDots: simpleDots$1,
+	simpleDotsScrolling: simpleDotsScrolling$1,
+	star: star$1,
+	star2: star2$1,
+	flip: flip$1,
+	hamburger: hamburger$1,
+	growVertical: growVertical$1,
+	growHorizontal: growHorizontal$1,
+	balloon: balloon$1,
+	balloon2: balloon2$1,
+	noise: noise$1,
+	bounce: bounce$1,
+	boxBounce: boxBounce$1,
+	boxBounce2: boxBounce2$1,
+	triangle: triangle$1,
+	arc: arc$1,
+	circle: circle$1,
+	squareCorners: squareCorners$1,
+	circleQuarters: circleQuarters$1,
+	circleHalves: circleHalves$1,
+	squish: squish$1,
+	toggle: toggle$1,
+	toggle2: toggle2$1,
+	toggle3: toggle3$1,
+	toggle4: toggle4$1,
+	toggle5: toggle5$1,
+	toggle6: toggle6$1,
+	toggle7: toggle7$1,
+	toggle8: toggle8$1,
+	toggle9: toggle9$1,
+	toggle10: toggle10$1,
+	toggle11: toggle11$1,
+	toggle12: toggle12$1,
+	toggle13: toggle13$1,
+	arrow: arrow$1,
+	arrow2: arrow2$1,
+	arrow3: arrow3$1,
+	bouncingBar: bouncingBar$1,
+	bouncingBall: bouncingBall$1,
+	smiley: smiley$1,
+	monkey: monkey$1,
+	hearts: hearts$1,
+	clock: clock$1,
+	earth: earth$1,
+	moon: moon$1,
+	runner: runner$1,
+	pong: pong$1,
+	shark: shark$1,
+	dqpb: dqpb$1,
+	weather: weather$1,
+	christmas: christmas$1,
+	grenade: grenade$1,
+	point: point$1,
+	layer: layer$1
 };
 
-var cliSpinners;
-var hasRequiredCliSpinners;
+var cliSpinners$2;
+var hasRequiredCliSpinners$1;
 
-function requireCliSpinners () {
-	if (hasRequiredCliSpinners) return cliSpinners;
-	hasRequiredCliSpinners = 1;
-	cliSpinners = require$$0$1;
-	return cliSpinners;
+function requireCliSpinners$1 () {
+	if (hasRequiredCliSpinners$1) return cliSpinners$2;
+	hasRequiredCliSpinners$1 = 1;
+	cliSpinners$2 = require$$0$2;
+	return cliSpinners$2;
 }
 
 var logUpdate = {exports: {}};
@@ -14988,7 +14988,7 @@ function requireAnsiEscapes () {
 	return ansiEscapes.exports;
 }
 
-var cliCursor = {};
+var cliCursor$1 = {};
 
 var mimicFn;
 var hasRequiredMimicFn;
@@ -15007,15 +15007,15 @@ function requireMimicFn () {
 	return mimicFn;
 }
 
-var onetime;
+var onetime$1;
 var hasRequiredOnetime;
 
 function requireOnetime () {
-	if (hasRequiredOnetime) return onetime;
+	if (hasRequiredOnetime) return onetime$1;
 	hasRequiredOnetime = 1;
 	const mimicFn = requireMimicFn();
 
-	onetime = (fn, opts) => {
+	onetime$1 = (fn, opts) => {
 		// TODO: Remove this in v3
 		if (opts === true) {
 			throw new TypeError('The second argument is now an options object');
@@ -15051,7 +15051,7 @@ function requireOnetime () {
 
 		return onetime;
 	};
-	return onetime;
+	return onetime$1;
 }
 
 var signalExit = {exports: {}};
@@ -15151,7 +15151,7 @@ function requireSignalExit () {
 	    return function () {}
 	  };
 	} else {
-	  var assert = require$$0$8;
+	  var assert = require$$0$9;
 	  var signals = requireSignals();
 	  var isWin = /^win/i.test(process.platform);
 
@@ -15331,27 +15331,27 @@ function requireSignalExit () {
 	return signalExit.exports;
 }
 
-var restoreCursor;
+var restoreCursor$1;
 var hasRequiredRestoreCursor;
 
 function requireRestoreCursor () {
-	if (hasRequiredRestoreCursor) return restoreCursor;
+	if (hasRequiredRestoreCursor) return restoreCursor$1;
 	hasRequiredRestoreCursor = 1;
 	const onetime = requireOnetime();
 	const signalExit = requireSignalExit();
 
-	restoreCursor = onetime(() => {
+	restoreCursor$1 = onetime(() => {
 		signalExit(() => {
 			process.stderr.write('\u001b[?25h');
 		}, {alwaysLast: true});
 	});
-	return restoreCursor;
+	return restoreCursor$1;
 }
 
 var hasRequiredCliCursor;
 
 function requireCliCursor () {
-	if (hasRequiredCliCursor) return cliCursor;
+	if (hasRequiredCliCursor) return cliCursor$1;
 	hasRequiredCliCursor = 1;
 	(function (exports) {
 		const restoreCursor = requireRestoreCursor();
@@ -15392,18 +15392,18 @@ function requireCliCursor () {
 				exports.hide(stream);
 			}
 		}; 
-	} (cliCursor));
-	return cliCursor;
+	} (cliCursor$1));
+	return cliCursor$1;
 }
 
-var ansiRegex;
+var ansiRegex$1;
 var hasRequiredAnsiRegex;
 
 function requireAnsiRegex () {
-	if (hasRequiredAnsiRegex) return ansiRegex;
+	if (hasRequiredAnsiRegex) return ansiRegex$1;
 	hasRequiredAnsiRegex = 1;
 
-	ansiRegex = () => {
+	ansiRegex$1 = () => {
 		const pattern = [
 			'[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]+)*|[a-zA-Z\\d]+(?:;[a-zA-Z\\d]*)*)?\\u0007)',
 			'(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PRZcf-ntqry=><~]))'
@@ -15411,19 +15411,19 @@ function requireAnsiRegex () {
 
 		return new RegExp(pattern, 'g');
 	};
-	return ansiRegex;
+	return ansiRegex$1;
 }
 
-var stripAnsi;
+var stripAnsi$1;
 var hasRequiredStripAnsi;
 
 function requireStripAnsi () {
-	if (hasRequiredStripAnsi) return stripAnsi;
+	if (hasRequiredStripAnsi) return stripAnsi$1;
 	hasRequiredStripAnsi = 1;
 	const ansiRegex = requireAnsiRegex();
 
-	stripAnsi = input => typeof input === 'string' ? input.replace(ansiRegex(), '') : input;
-	return stripAnsi;
+	stripAnsi$1 = input => typeof input === 'string' ? input.replace(ansiRegex(), '') : input;
+	return stripAnsi$1;
 }
 
 var isFullwidthCodePoint;
@@ -15480,16 +15480,16 @@ function requireIsFullwidthCodePoint () {
 	return isFullwidthCodePoint;
 }
 
-var stringWidth;
+var stringWidth$1;
 var hasRequiredStringWidth;
 
 function requireStringWidth () {
-	if (hasRequiredStringWidth) return stringWidth;
+	if (hasRequiredStringWidth) return stringWidth$1;
 	hasRequiredStringWidth = 1;
 	const stripAnsi = requireStripAnsi();
 	const isFullwidthCodePoint = requireIsFullwidthCodePoint();
 
-	stringWidth = str => {
+	stringWidth$1 = str => {
 		if (typeof str !== 'string' || str.length === 0) {
 			return 0;
 		}
@@ -15521,7 +15521,7 @@ function requireStringWidth () {
 
 		return width;
 	};
-	return stringWidth;
+	return stringWidth$1;
 }
 
 var wrapAnsi_1;
@@ -15864,7 +15864,7 @@ function requireEstimates () {
 	if (hasRequiredEstimates) return estimates;
 	hasRequiredEstimates = 1;
 
-	const { existsSync, mkdirSync, readFileSync, writeFileSync } = require$$0$7;
+	const { existsSync, mkdirSync, readFileSync, writeFileSync } = require$$0$8;
 	const { join } = require$$1$2;
 
 	const getEstimate = (id, estimatedDuration, storagePath) => {
@@ -16040,7 +16040,7 @@ function requireLogger () {
 	return logger$1;
 }
 
-var chalk$1 = {exports: {}};
+var chalk$2 = {exports: {}};
 
 var escapeStringRegexp;
 var hasRequiredEscapeStringRegexp;
@@ -16061,7 +16061,7 @@ function requireEscapeStringRegexp () {
 	return escapeStringRegexp;
 }
 
-var ansiStyles = {exports: {}};
+var ansiStyles$1 = {exports: {}};
 
 var conversions = {exports: {}};
 
@@ -17294,12 +17294,12 @@ function requireColorConvert () {
 	return colorConvert;
 }
 
-ansiStyles.exports;
+ansiStyles$1.exports;
 
 var hasRequiredAnsiStyles;
 
 function requireAnsiStyles () {
-	if (hasRequiredAnsiStyles) return ansiStyles.exports;
+	if (hasRequiredAnsiStyles) return ansiStyles$1.exports;
 	hasRequiredAnsiStyles = 1;
 	(function (module) {
 		const colorConvert = requireColorConvert();
@@ -17466,8 +17466,8 @@ function requireAnsiStyles () {
 			enumerable: true,
 			get: assembleStyles
 		}); 
-	} (ansiStyles));
-	return ansiStyles.exports;
+	} (ansiStyles$1));
+	return ansiStyles$1.exports;
 }
 
 var templates$2;
@@ -17609,7 +17609,7 @@ function requireTemplates$1 () {
 var hasRequiredChalk;
 
 function requireChalk () {
-	if (hasRequiredChalk) return chalk$1.exports;
+	if (hasRequiredChalk) return chalk$2.exports;
 	hasRequiredChalk = 1;
 	(function (module) {
 		const escapeStringRegexp = requireEscapeStringRegexp();
@@ -17839,8 +17839,8 @@ function requireChalk () {
 		module.exports = Chalk(); // eslint-disable-line new-cap
 		module.exports.supportsColor = stdoutColor;
 		module.exports.default = module.exports; // For TypeScript 
-	} (chalk$1));
-	return chalk$1.exports;
+	} (chalk$2));
+	return chalk$2.exports;
 }
 
 var theme_1;
@@ -17885,9 +17885,9 @@ function requireSrc () {
 	if (hasRequiredSrc) return src;
 	hasRequiredSrc = 1;
 
-	const { dots } = requireCliSpinners();
+	const { dots } = requireCliSpinners$1();
 	const logUpdate = requireLogUpdate();
-	const { tmpdir } = require$$0$5;
+	const { tmpdir } = require$$0$6;
 
 	const configureLogger = requireLogger();
 
@@ -17934,8 +17934,8 @@ var hasRequiredSupportsColor;
 function requireSupportsColor () {
 	if (hasRequiredSupportsColor) return supportsColor_1;
 	hasRequiredSupportsColor = 1;
-	const os = require$$0$5;
-	const tty = require$$0$4;
+	const os = require$$0$6;
+	const tty = require$$0$5;
 	const hasFlag = requireHasFlag();
 
 	const {env} = process;
@@ -18498,7 +18498,7 @@ function requireSource () {
 }
 
 var sourceExports = requireSource();
-var chalk = /*@__PURE__*/getDefaultExportFromCjs(sourceExports);
+var chalk$1 = /*@__PURE__*/getDefaultExportFromCjs(sourceExports);
 
 // import cliSpinners from "cli-spinners";
 const logger = createLogger({
@@ -18528,16 +18528,16 @@ function clone(repository, pName, options) {
             yield logger(git.clone(repository, pName, options), "clone repository from remote repository...", {
                 estimate: 10000, // 预计耗时，单位为毫秒
             });
-            console.log(chalk.green("clone repository success"));
+            console.log(chalk$1.green("clone repository success"));
             console.log();
-            console.log(chalk.yellow("cd <your-project>"));
-            console.log(chalk.yellow("npm install"));
-            console.log(chalk.yellow("npm run dev"));
-            console.log(chalk.blueBright("when you are done, run `npm run build` to compile your project."));
+            console.log(chalk$1.yellow("cd <your-project>"));
+            console.log(chalk$1.yellow("npm install"));
+            console.log(chalk$1.yellow("npm run dev"));
+            console.log(chalk$1.blueBright("when you are done, run `npm run build` to compile your project."));
         }
         catch (e) {
             /* handle all errors here */
-            console.log(chalk.red("clone repository error"), e);
+            console.log(chalk$1.red("clone repository error"), e);
         }
     });
 }
@@ -18577,7 +18577,7 @@ function isCoverDir(name) {
     });
 }
 
-var version = "0.1.1";
+var version = "0.1.2";
 
 function bind(fn, thisArg) {
   return function wrap() {
@@ -19447,7 +19447,7 @@ function requireDelayed_stream () {
 	if (hasRequiredDelayed_stream) return delayed_stream;
 	hasRequiredDelayed_stream = 1;
 	var Stream = stream.Stream;
-	var util = require$$0$6;
+	var util = require$$0$7;
 
 	delayed_stream = DelayedStream;
 	function DelayedStream() {
@@ -19562,7 +19562,7 @@ var hasRequiredCombined_stream;
 function requireCombined_stream () {
 	if (hasRequiredCombined_stream) return combined_stream;
 	hasRequiredCombined_stream = 1;
-	var util = require$$0$6;
+	var util = require$$0$7;
 	var Stream = stream.Stream;
 	var DelayedStream = requireDelayed_stream();
 
@@ -19775,7 +19775,7 @@ function requireCombined_stream () {
 
 var mimeTypes = {};
 
-var require$$0 = {
+var require$$0$1 = {
 	"application/1d-interleaved-parityfec": {
 	source: "iana"
 },
@@ -30495,7 +30495,7 @@ function requireMimeDb () {
 	 * Module exports.
 	 */
 
-	mimeDb = require$$0;
+	mimeDb = require$$0$1;
 	return mimeDb;
 }
 
@@ -31184,12 +31184,12 @@ function requireForm_data () {
 	if (hasRequiredForm_data) return form_data;
 	hasRequiredForm_data = 1;
 	var CombinedStream = requireCombined_stream();
-	var util = require$$0$6;
+	var util = require$$0$7;
 	var path = require$$1$2;
 	var http = require$$3$1;
 	var https = require$$4;
-	var parseUrl = require$$0$9.parse;
-	var fs = require$$0$7;
+	var parseUrl = require$$0$a.parse;
+	var fs = require$$0$8;
 	var Stream = stream.Stream;
 	var mime = requireMimeTypes();
 	var asynckit = requireAsynckit();
@@ -32091,7 +32091,7 @@ var transitionalDefaults = {
   clarifyTimeoutError: false
 };
 
-var URLSearchParams = require$$0$9.URLSearchParams;
+var URLSearchParams = require$$0$a.URLSearchParams;
 
 var platform$1 = {
   isNode: true,
@@ -32885,7 +32885,7 @@ function requireProxyFromEnv () {
 	if (hasRequiredProxyFromEnv) return proxyFromEnv$1;
 	hasRequiredProxyFromEnv = 1;
 
-	var parseUrl = require$$0$9.parse;
+	var parseUrl = require$$0$a.parse;
 
 	var DEFAULT_PORTS = {
 	  ftp: 21,
@@ -33028,12 +33028,12 @@ var hasRequiredFollowRedirects;
 function requireFollowRedirects () {
 	if (hasRequiredFollowRedirects) return followRedirects$1.exports;
 	hasRequiredFollowRedirects = 1;
-	var url = require$$0$9;
+	var url = require$$0$a;
 	var URL = url.URL;
 	var http = require$$3$1;
 	var https = require$$4;
 	var Writable = stream.Writable;
-	var assert = require$$0$8;
+	var assert = require$$0$9;
 	var debug = requireDebug();
 
 	// Preventive platform detection
@@ -33928,7 +33928,7 @@ const readBlob = async function* (blob) {
 
 const BOUNDARY_ALPHABET = utils$1.ALPHABET.ALPHA_DIGIT + '-_';
 
-const textEncoder = typeof TextEncoder === 'function' ? new TextEncoder() : new require$$0$6.TextEncoder();
+const textEncoder = typeof TextEncoder === 'function' ? new TextEncoder() : new require$$0$7.TextEncoder();
 
 const CRLF = '\r\n';
 const CRLF_BYTES = textEncoder.encode(CRLF);
@@ -34485,7 +34485,7 @@ var httpAdapter = isHttpAdapterSupported && function httpAdapter(config) {
 
       if (!headers.hasContentLength()) {
         try {
-          const knownLength = await require$$0$6.promisify(data.getLength).call(data);
+          const knownLength = await require$$0$7.promisify(data.getLength).call(data);
           Number.isFinite(knownLength) && knownLength >= 0 && headers.setContentLength(knownLength);
           /*eslint no-empty:0*/
         } catch (e) {
@@ -36447,8 +36447,8 @@ const create = () => __awaiter(undefined, undefined, undefined, function* () {
     // 检测版本信息
     const vbersionBool = yield checkVersion("yys-app-cli", version);
     if (!vbersionBool) {
-        console.log(chalk.red(`当前版本为${version}，请更新到最新版本`));
-        console.log(chalk.blueBright(`请执行以下命令更新：npm install -g yys-app-cli`));
+        console.log(chalk$1.red(`当前版本为${version}，请更新到最新版本`));
+        console.log(chalk$1.blueBright(`请执行以下命令更新：npm install -g yys-app-cli`));
         return;
     }
     // 输入项目名称
@@ -36485,13 +36485,3372 @@ const create = () => __awaiter(undefined, undefined, undefined, function* () {
     }
 });
 
+const ANSI_BACKGROUND_OFFSET = 10;
+
+const wrapAnsi16 = (offset = 0) => code => `\u001B[${code + offset}m`;
+
+const wrapAnsi256 = (offset = 0) => code => `\u001B[${38 + offset};5;${code}m`;
+
+const wrapAnsi16m = (offset = 0) => (red, green, blue) => `\u001B[${38 + offset};2;${red};${green};${blue}m`;
+
+const styles$1 = {
+	modifier: {
+		reset: [0, 0],
+		// 21 isn't widely supported and 22 does the same thing
+		bold: [1, 22],
+		dim: [2, 22],
+		italic: [3, 23],
+		underline: [4, 24],
+		overline: [53, 55],
+		inverse: [7, 27],
+		hidden: [8, 28],
+		strikethrough: [9, 29],
+	},
+	color: {
+		black: [30, 39],
+		red: [31, 39],
+		green: [32, 39],
+		yellow: [33, 39],
+		blue: [34, 39],
+		magenta: [35, 39],
+		cyan: [36, 39],
+		white: [37, 39],
+
+		// Bright color
+		blackBright: [90, 39],
+		gray: [90, 39], // Alias of `blackBright`
+		grey: [90, 39], // Alias of `blackBright`
+		redBright: [91, 39],
+		greenBright: [92, 39],
+		yellowBright: [93, 39],
+		blueBright: [94, 39],
+		magentaBright: [95, 39],
+		cyanBright: [96, 39],
+		whiteBright: [97, 39],
+	},
+	bgColor: {
+		bgBlack: [40, 49],
+		bgRed: [41, 49],
+		bgGreen: [42, 49],
+		bgYellow: [43, 49],
+		bgBlue: [44, 49],
+		bgMagenta: [45, 49],
+		bgCyan: [46, 49],
+		bgWhite: [47, 49],
+
+		// Bright color
+		bgBlackBright: [100, 49],
+		bgGray: [100, 49], // Alias of `bgBlackBright`
+		bgGrey: [100, 49], // Alias of `bgBlackBright`
+		bgRedBright: [101, 49],
+		bgGreenBright: [102, 49],
+		bgYellowBright: [103, 49],
+		bgBlueBright: [104, 49],
+		bgMagentaBright: [105, 49],
+		bgCyanBright: [106, 49],
+		bgWhiteBright: [107, 49],
+	},
+};
+
+Object.keys(styles$1.modifier);
+const foregroundColorNames = Object.keys(styles$1.color);
+const backgroundColorNames = Object.keys(styles$1.bgColor);
+[...foregroundColorNames, ...backgroundColorNames];
+
+function assembleStyles() {
+	const codes = new Map();
+
+	for (const [groupName, group] of Object.entries(styles$1)) {
+		for (const [styleName, style] of Object.entries(group)) {
+			styles$1[styleName] = {
+				open: `\u001B[${style[0]}m`,
+				close: `\u001B[${style[1]}m`,
+			};
+
+			group[styleName] = styles$1[styleName];
+
+			codes.set(style[0], style[1]);
+		}
+
+		Object.defineProperty(styles$1, groupName, {
+			value: group,
+			enumerable: false,
+		});
+	}
+
+	Object.defineProperty(styles$1, 'codes', {
+		value: codes,
+		enumerable: false,
+	});
+
+	styles$1.color.close = '\u001B[39m';
+	styles$1.bgColor.close = '\u001B[49m';
+
+	styles$1.color.ansi = wrapAnsi16();
+	styles$1.color.ansi256 = wrapAnsi256();
+	styles$1.color.ansi16m = wrapAnsi16m();
+	styles$1.bgColor.ansi = wrapAnsi16(ANSI_BACKGROUND_OFFSET);
+	styles$1.bgColor.ansi256 = wrapAnsi256(ANSI_BACKGROUND_OFFSET);
+	styles$1.bgColor.ansi16m = wrapAnsi16m(ANSI_BACKGROUND_OFFSET);
+
+	// From https://github.com/Qix-/color-convert/blob/3f0e0d4e92e235796ccb17f6e85c72094a651f49/conversions.js
+	Object.defineProperties(styles$1, {
+		rgbToAnsi256: {
+			value(red, green, blue) {
+				// We use the extended greyscale palette here, with the exception of
+				// black and white. normal palette only has 4 greyscale shades.
+				if (red === green && green === blue) {
+					if (red < 8) {
+						return 16;
+					}
+
+					if (red > 248) {
+						return 231;
+					}
+
+					return Math.round(((red - 8) / 247) * 24) + 232;
+				}
+
+				return 16
+					+ (36 * Math.round(red / 255 * 5))
+					+ (6 * Math.round(green / 255 * 5))
+					+ Math.round(blue / 255 * 5);
+			},
+			enumerable: false,
+		},
+		hexToRgb: {
+			value(hex) {
+				const matches = /[a-f\d]{6}|[a-f\d]{3}/i.exec(hex.toString(16));
+				if (!matches) {
+					return [0, 0, 0];
+				}
+
+				let [colorString] = matches;
+
+				if (colorString.length === 3) {
+					colorString = [...colorString].map(character => character + character).join('');
+				}
+
+				const integer = Number.parseInt(colorString, 16);
+
+				return [
+					/* eslint-disable no-bitwise */
+					(integer >> 16) & 0xFF,
+					(integer >> 8) & 0xFF,
+					integer & 0xFF,
+					/* eslint-enable no-bitwise */
+				];
+			},
+			enumerable: false,
+		},
+		hexToAnsi256: {
+			value: hex => styles$1.rgbToAnsi256(...styles$1.hexToRgb(hex)),
+			enumerable: false,
+		},
+		ansi256ToAnsi: {
+			value(code) {
+				if (code < 8) {
+					return 30 + code;
+				}
+
+				if (code < 16) {
+					return 90 + (code - 8);
+				}
+
+				let red;
+				let green;
+				let blue;
+
+				if (code >= 232) {
+					red = (((code - 232) * 10) + 8) / 255;
+					green = red;
+					blue = red;
+				} else {
+					code -= 16;
+
+					const remainder = code % 36;
+
+					red = Math.floor(code / 36) / 5;
+					green = Math.floor(remainder / 6) / 5;
+					blue = (remainder % 6) / 5;
+				}
+
+				const value = Math.max(red, green, blue) * 2;
+
+				if (value === 0) {
+					return 30;
+				}
+
+				// eslint-disable-next-line no-bitwise
+				let result = 30 + ((Math.round(blue) << 2) | (Math.round(green) << 1) | Math.round(red));
+
+				if (value === 2) {
+					result += 60;
+				}
+
+				return result;
+			},
+			enumerable: false,
+		},
+		rgbToAnsi: {
+			value: (red, green, blue) => styles$1.ansi256ToAnsi(styles$1.rgbToAnsi256(red, green, blue)),
+			enumerable: false,
+		},
+		hexToAnsi: {
+			value: hex => styles$1.ansi256ToAnsi(styles$1.hexToAnsi256(hex)),
+			enumerable: false,
+		},
+	});
+
+	return styles$1;
+}
+
+const ansiStyles = assembleStyles();
+
+/* eslint-env browser */
+
+const level = (() => {
+	if (!('navigator' in globalThis)) {
+		return 0;
+	}
+
+	if (globalThis.navigator.userAgentData) {
+		const brand = navigator.userAgentData.brands.find(({brand}) => brand === 'Chromium');
+		if (brand && brand.version > 93) {
+			return 3;
+		}
+	}
+
+	if (/\b(Chrome|Chromium)\//.test(globalThis.navigator.userAgent)) {
+		return 1;
+	}
+
+	return 0;
+})();
+
+const colorSupport = level !== 0 && {
+	level,
+	hasBasic: true,
+	has256: level >= 2,
+	has16m: level >= 3,
+};
+
+const supportsColor = {
+	stdout: colorSupport,
+	stderr: colorSupport,
+};
+
+// TODO: When targeting Node.js 16, use `String.prototype.replaceAll`.
+function stringReplaceAll(string, substring, replacer) {
+	let index = string.indexOf(substring);
+	if (index === -1) {
+		return string;
+	}
+
+	const substringLength = substring.length;
+	let endIndex = 0;
+	let returnValue = '';
+	do {
+		returnValue += string.slice(endIndex, index) + substring + replacer;
+		endIndex = index + substringLength;
+		index = string.indexOf(substring, endIndex);
+	} while (index !== -1);
+
+	returnValue += string.slice(endIndex);
+	return returnValue;
+}
+
+function stringEncaseCRLFWithFirstIndex(string, prefix, postfix, index) {
+	let endIndex = 0;
+	let returnValue = '';
+	do {
+		const gotCR = string[index - 1] === '\r';
+		returnValue += string.slice(endIndex, (gotCR ? index - 1 : index)) + prefix + (gotCR ? '\r\n' : '\n') + postfix;
+		endIndex = index + 1;
+		index = string.indexOf('\n', endIndex);
+	} while (index !== -1);
+
+	returnValue += string.slice(endIndex);
+	return returnValue;
+}
+
+const {stdout: stdoutColor, stderr: stderrColor} = supportsColor;
+
+const GENERATOR = Symbol('GENERATOR');
+const STYLER = Symbol('STYLER');
+const IS_EMPTY = Symbol('IS_EMPTY');
+
+// `supportsColor.level` → `ansiStyles.color[name]` mapping
+const levelMapping = [
+	'ansi',
+	'ansi',
+	'ansi256',
+	'ansi16m',
+];
+
+const styles = Object.create(null);
+
+const applyOptions = (object, options = {}) => {
+	if (options.level && !(Number.isInteger(options.level) && options.level >= 0 && options.level <= 3)) {
+		throw new Error('The `level` option should be an integer from 0 to 3');
+	}
+
+	// Detect level if not set manually
+	const colorLevel = stdoutColor ? stdoutColor.level : 0;
+	object.level = options.level === undefined ? colorLevel : options.level;
+};
+
+const chalkFactory = options => {
+	const chalk = (...strings) => strings.join(' ');
+	applyOptions(chalk, options);
+
+	Object.setPrototypeOf(chalk, createChalk.prototype);
+
+	return chalk;
+};
+
+function createChalk(options) {
+	return chalkFactory(options);
+}
+
+Object.setPrototypeOf(createChalk.prototype, Function.prototype);
+
+for (const [styleName, style] of Object.entries(ansiStyles)) {
+	styles[styleName] = {
+		get() {
+			const builder = createBuilder(this, createStyler(style.open, style.close, this[STYLER]), this[IS_EMPTY]);
+			Object.defineProperty(this, styleName, {value: builder});
+			return builder;
+		},
+	};
+}
+
+styles.visible = {
+	get() {
+		const builder = createBuilder(this, this[STYLER], true);
+		Object.defineProperty(this, 'visible', {value: builder});
+		return builder;
+	},
+};
+
+const getModelAnsi = (model, level, type, ...arguments_) => {
+	if (model === 'rgb') {
+		if (level === 'ansi16m') {
+			return ansiStyles[type].ansi16m(...arguments_);
+		}
+
+		if (level === 'ansi256') {
+			return ansiStyles[type].ansi256(ansiStyles.rgbToAnsi256(...arguments_));
+		}
+
+		return ansiStyles[type].ansi(ansiStyles.rgbToAnsi(...arguments_));
+	}
+
+	if (model === 'hex') {
+		return getModelAnsi('rgb', level, type, ...ansiStyles.hexToRgb(...arguments_));
+	}
+
+	return ansiStyles[type][model](...arguments_);
+};
+
+const usedModels = ['rgb', 'hex', 'ansi256'];
+
+for (const model of usedModels) {
+	styles[model] = {
+		get() {
+			const {level} = this;
+			return function (...arguments_) {
+				const styler = createStyler(getModelAnsi(model, levelMapping[level], 'color', ...arguments_), ansiStyles.color.close, this[STYLER]);
+				return createBuilder(this, styler, this[IS_EMPTY]);
+			};
+		},
+	};
+
+	const bgModel = 'bg' + model[0].toUpperCase() + model.slice(1);
+	styles[bgModel] = {
+		get() {
+			const {level} = this;
+			return function (...arguments_) {
+				const styler = createStyler(getModelAnsi(model, levelMapping[level], 'bgColor', ...arguments_), ansiStyles.bgColor.close, this[STYLER]);
+				return createBuilder(this, styler, this[IS_EMPTY]);
+			};
+		},
+	};
+}
+
+const proto = Object.defineProperties(() => {}, {
+	...styles,
+	level: {
+		enumerable: true,
+		get() {
+			return this[GENERATOR].level;
+		},
+		set(level) {
+			this[GENERATOR].level = level;
+		},
+	},
+});
+
+const createStyler = (open, close, parent) => {
+	let openAll;
+	let closeAll;
+	if (parent === undefined) {
+		openAll = open;
+		closeAll = close;
+	} else {
+		openAll = parent.openAll + open;
+		closeAll = close + parent.closeAll;
+	}
+
+	return {
+		open,
+		close,
+		openAll,
+		closeAll,
+		parent,
+	};
+};
+
+const createBuilder = (self, _styler, _isEmpty) => {
+	// Single argument is hot path, implicit coercion is faster than anything
+	// eslint-disable-next-line no-implicit-coercion
+	const builder = (...arguments_) => applyStyle(builder, (arguments_.length === 1) ? ('' + arguments_[0]) : arguments_.join(' '));
+
+	// We alter the prototype because we must return a function, but there is
+	// no way to create a function with a different prototype
+	Object.setPrototypeOf(builder, proto);
+
+	builder[GENERATOR] = self;
+	builder[STYLER] = _styler;
+	builder[IS_EMPTY] = _isEmpty;
+
+	return builder;
+};
+
+const applyStyle = (self, string) => {
+	if (self.level <= 0 || !string) {
+		return self[IS_EMPTY] ? '' : string;
+	}
+
+	let styler = self[STYLER];
+
+	if (styler === undefined) {
+		return string;
+	}
+
+	const {openAll, closeAll} = styler;
+	if (string.includes('\u001B')) {
+		while (styler !== undefined) {
+			// Replace any instances already present with a re-opening code
+			// otherwise only the part of the string until said closing code
+			// will be colored, and the rest will simply be 'plain'.
+			string = stringReplaceAll(string, styler.close, styler.open);
+
+			styler = styler.parent;
+		}
+	}
+
+	// We can move both next actions out of loop, because remaining actions in loop won't have
+	// any/visible effect on parts we add here. Close the styling before a linebreak and reopen
+	// after next line to fix a bleed issue on macOS: https://github.com/chalk/chalk/pull/92
+	const lfIndex = string.indexOf('\n');
+	if (lfIndex !== -1) {
+		string = stringEncaseCRLFWithFirstIndex(string, closeAll, openAll, lfIndex);
+	}
+
+	return openAll + string + closeAll;
+};
+
+Object.defineProperties(createChalk.prototype, styles);
+
+const chalk = createChalk();
+createChalk({level: stderrColor ? stderrColor.level : 0});
+
+const copyProperty = (to, from, property, ignoreNonConfigurable) => {
+	// `Function#length` should reflect the parameters of `to` not `from` since we keep its body.
+	// `Function#prototype` is non-writable and non-configurable so can never be modified.
+	if (property === 'length' || property === 'prototype') {
+		return;
+	}
+
+	// `Function#arguments` and `Function#caller` should not be copied. They were reported to be present in `Reflect.ownKeys` for some devices in React Native (#41), so we explicitly ignore them here.
+	if (property === 'arguments' || property === 'caller') {
+		return;
+	}
+
+	const toDescriptor = Object.getOwnPropertyDescriptor(to, property);
+	const fromDescriptor = Object.getOwnPropertyDescriptor(from, property);
+
+	if (!canCopyProperty(toDescriptor, fromDescriptor) && ignoreNonConfigurable) {
+		return;
+	}
+
+	Object.defineProperty(to, property, fromDescriptor);
+};
+
+// `Object.defineProperty()` throws if the property exists, is not configurable and either:
+// - one its descriptors is changed
+// - it is non-writable and its value is changed
+const canCopyProperty = function (toDescriptor, fromDescriptor) {
+	return toDescriptor === undefined || toDescriptor.configurable || (
+		toDescriptor.writable === fromDescriptor.writable
+		&& toDescriptor.enumerable === fromDescriptor.enumerable
+		&& toDescriptor.configurable === fromDescriptor.configurable
+		&& (toDescriptor.writable || toDescriptor.value === fromDescriptor.value)
+	);
+};
+
+const changePrototype = (to, from) => {
+	const fromPrototype = Object.getPrototypeOf(from);
+	if (fromPrototype === Object.getPrototypeOf(to)) {
+		return;
+	}
+
+	Object.setPrototypeOf(to, fromPrototype);
+};
+
+const wrappedToString = (withName, fromBody) => `/* Wrapped ${withName}*/\n${fromBody}`;
+
+const toStringDescriptor = Object.getOwnPropertyDescriptor(Function.prototype, 'toString');
+const toStringName = Object.getOwnPropertyDescriptor(Function.prototype.toString, 'name');
+
+// We call `from.toString()` early (not lazily) to ensure `from` can be garbage collected.
+// We use `bind()` instead of a closure for the same reason.
+// Calling `from.toString()` early also allows caching it in case `to.toString()` is called several times.
+const changeToString = (to, from, name) => {
+	const withName = name === '' ? '' : `with ${name.trim()}() `;
+	const newToString = wrappedToString.bind(null, withName, from.toString());
+	// Ensure `to.toString.toString` is non-enumerable and has the same `same`
+	Object.defineProperty(newToString, 'name', toStringName);
+	const {writable, enumerable, configurable} = toStringDescriptor; // We destructue to avoid a potential `get` descriptor.
+	Object.defineProperty(to, 'toString', {value: newToString, writable, enumerable, configurable});
+};
+
+function mimicFunction(to, from, {ignoreNonConfigurable = false} = {}) {
+	const {name} = to;
+
+	for (const property of Reflect.ownKeys(from)) {
+		copyProperty(to, from, property, ignoreNonConfigurable);
+	}
+
+	changePrototype(to, from);
+	changeToString(to, from, name);
+
+	return to;
+}
+
+const calledFunctions = new WeakMap();
+
+const onetime = (function_, options = {}) => {
+	if (typeof function_ !== 'function') {
+		throw new TypeError('Expected a function');
+	}
+
+	let returnValue;
+	let callCount = 0;
+	const functionName = function_.displayName || function_.name || '<anonymous>';
+
+	const onetime = function (...arguments_) {
+		calledFunctions.set(onetime, ++callCount);
+
+		if (callCount === 1) {
+			returnValue = function_.apply(this, arguments_);
+			function_ = undefined;
+		} else if (options.throw === true) {
+			throw new Error(`Function \`${functionName}\` can only be called once`);
+		}
+
+		return returnValue;
+	};
+
+	mimicFunction(onetime, function_);
+	calledFunctions.set(onetime, callCount);
+
+	return onetime;
+};
+
+onetime.callCount = function_ => {
+	if (!calledFunctions.has(function_)) {
+		throw new Error(`The given function \`${function_.name}\` is not wrapped by the \`onetime\` package`);
+	}
+
+	return calledFunctions.get(function_);
+};
+
+const terminal = process$2.stderr.isTTY
+	? process$2.stderr
+	: (process$2.stdout.isTTY ? process$2.stdout : undefined);
+
+const restoreCursor = terminal ? onetime(() => {
+	onExit(() => {
+		terminal.write('\u001B[?25h');
+	}, {alwaysLast: true});
+}) : () => {};
+
+let isHidden = false;
+
+const cliCursor = {};
+
+cliCursor.show = (writableStream = process$2.stderr) => {
+	if (!writableStream.isTTY) {
+		return;
+	}
+
+	isHidden = false;
+	writableStream.write('\u001B[?25h');
+};
+
+cliCursor.hide = (writableStream = process$2.stderr) => {
+	if (!writableStream.isTTY) {
+		return;
+	}
+
+	restoreCursor();
+	isHidden = true;
+	writableStream.write('\u001B[?25l');
+};
+
+cliCursor.toggle = (force, writableStream) => {
+	if (force !== undefined) {
+		isHidden = force;
+	}
+
+	if (isHidden) {
+		cliCursor.show(writableStream);
+	} else {
+		cliCursor.hide(writableStream);
+	}
+};
+
+var dots = {
+	interval: 80,
+	frames: [
+		"⠋",
+		"⠙",
+		"⠹",
+		"⠸",
+		"⠼",
+		"⠴",
+		"⠦",
+		"⠧",
+		"⠇",
+		"⠏"
+	]
+};
+var dots2 = {
+	interval: 80,
+	frames: [
+		"⣾",
+		"⣽",
+		"⣻",
+		"⢿",
+		"⡿",
+		"⣟",
+		"⣯",
+		"⣷"
+	]
+};
+var dots3 = {
+	interval: 80,
+	frames: [
+		"⠋",
+		"⠙",
+		"⠚",
+		"⠞",
+		"⠖",
+		"⠦",
+		"⠴",
+		"⠲",
+		"⠳",
+		"⠓"
+	]
+};
+var dots4 = {
+	interval: 80,
+	frames: [
+		"⠄",
+		"⠆",
+		"⠇",
+		"⠋",
+		"⠙",
+		"⠸",
+		"⠰",
+		"⠠",
+		"⠰",
+		"⠸",
+		"⠙",
+		"⠋",
+		"⠇",
+		"⠆"
+	]
+};
+var dots5 = {
+	interval: 80,
+	frames: [
+		"⠋",
+		"⠙",
+		"⠚",
+		"⠒",
+		"⠂",
+		"⠂",
+		"⠒",
+		"⠲",
+		"⠴",
+		"⠦",
+		"⠖",
+		"⠒",
+		"⠐",
+		"⠐",
+		"⠒",
+		"⠓",
+		"⠋"
+	]
+};
+var dots6 = {
+	interval: 80,
+	frames: [
+		"⠁",
+		"⠉",
+		"⠙",
+		"⠚",
+		"⠒",
+		"⠂",
+		"⠂",
+		"⠒",
+		"⠲",
+		"⠴",
+		"⠤",
+		"⠄",
+		"⠄",
+		"⠤",
+		"⠴",
+		"⠲",
+		"⠒",
+		"⠂",
+		"⠂",
+		"⠒",
+		"⠚",
+		"⠙",
+		"⠉",
+		"⠁"
+	]
+};
+var dots7 = {
+	interval: 80,
+	frames: [
+		"⠈",
+		"⠉",
+		"⠋",
+		"⠓",
+		"⠒",
+		"⠐",
+		"⠐",
+		"⠒",
+		"⠖",
+		"⠦",
+		"⠤",
+		"⠠",
+		"⠠",
+		"⠤",
+		"⠦",
+		"⠖",
+		"⠒",
+		"⠐",
+		"⠐",
+		"⠒",
+		"⠓",
+		"⠋",
+		"⠉",
+		"⠈"
+	]
+};
+var dots8 = {
+	interval: 80,
+	frames: [
+		"⠁",
+		"⠁",
+		"⠉",
+		"⠙",
+		"⠚",
+		"⠒",
+		"⠂",
+		"⠂",
+		"⠒",
+		"⠲",
+		"⠴",
+		"⠤",
+		"⠄",
+		"⠄",
+		"⠤",
+		"⠠",
+		"⠠",
+		"⠤",
+		"⠦",
+		"⠖",
+		"⠒",
+		"⠐",
+		"⠐",
+		"⠒",
+		"⠓",
+		"⠋",
+		"⠉",
+		"⠈",
+		"⠈"
+	]
+};
+var dots9 = {
+	interval: 80,
+	frames: [
+		"⢹",
+		"⢺",
+		"⢼",
+		"⣸",
+		"⣇",
+		"⡧",
+		"⡗",
+		"⡏"
+	]
+};
+var dots10 = {
+	interval: 80,
+	frames: [
+		"⢄",
+		"⢂",
+		"⢁",
+		"⡁",
+		"⡈",
+		"⡐",
+		"⡠"
+	]
+};
+var dots11 = {
+	interval: 100,
+	frames: [
+		"⠁",
+		"⠂",
+		"⠄",
+		"⡀",
+		"⢀",
+		"⠠",
+		"⠐",
+		"⠈"
+	]
+};
+var dots12 = {
+	interval: 80,
+	frames: [
+		"⢀⠀",
+		"⡀⠀",
+		"⠄⠀",
+		"⢂⠀",
+		"⡂⠀",
+		"⠅⠀",
+		"⢃⠀",
+		"⡃⠀",
+		"⠍⠀",
+		"⢋⠀",
+		"⡋⠀",
+		"⠍⠁",
+		"⢋⠁",
+		"⡋⠁",
+		"⠍⠉",
+		"⠋⠉",
+		"⠋⠉",
+		"⠉⠙",
+		"⠉⠙",
+		"⠉⠩",
+		"⠈⢙",
+		"⠈⡙",
+		"⢈⠩",
+		"⡀⢙",
+		"⠄⡙",
+		"⢂⠩",
+		"⡂⢘",
+		"⠅⡘",
+		"⢃⠨",
+		"⡃⢐",
+		"⠍⡐",
+		"⢋⠠",
+		"⡋⢀",
+		"⠍⡁",
+		"⢋⠁",
+		"⡋⠁",
+		"⠍⠉",
+		"⠋⠉",
+		"⠋⠉",
+		"⠉⠙",
+		"⠉⠙",
+		"⠉⠩",
+		"⠈⢙",
+		"⠈⡙",
+		"⠈⠩",
+		"⠀⢙",
+		"⠀⡙",
+		"⠀⠩",
+		"⠀⢘",
+		"⠀⡘",
+		"⠀⠨",
+		"⠀⢐",
+		"⠀⡐",
+		"⠀⠠",
+		"⠀⢀",
+		"⠀⡀"
+	]
+};
+var dots13 = {
+	interval: 80,
+	frames: [
+		"⣼",
+		"⣹",
+		"⢻",
+		"⠿",
+		"⡟",
+		"⣏",
+		"⣧",
+		"⣶"
+	]
+};
+var dots8Bit = {
+	interval: 80,
+	frames: [
+		"⠀",
+		"⠁",
+		"⠂",
+		"⠃",
+		"⠄",
+		"⠅",
+		"⠆",
+		"⠇",
+		"⡀",
+		"⡁",
+		"⡂",
+		"⡃",
+		"⡄",
+		"⡅",
+		"⡆",
+		"⡇",
+		"⠈",
+		"⠉",
+		"⠊",
+		"⠋",
+		"⠌",
+		"⠍",
+		"⠎",
+		"⠏",
+		"⡈",
+		"⡉",
+		"⡊",
+		"⡋",
+		"⡌",
+		"⡍",
+		"⡎",
+		"⡏",
+		"⠐",
+		"⠑",
+		"⠒",
+		"⠓",
+		"⠔",
+		"⠕",
+		"⠖",
+		"⠗",
+		"⡐",
+		"⡑",
+		"⡒",
+		"⡓",
+		"⡔",
+		"⡕",
+		"⡖",
+		"⡗",
+		"⠘",
+		"⠙",
+		"⠚",
+		"⠛",
+		"⠜",
+		"⠝",
+		"⠞",
+		"⠟",
+		"⡘",
+		"⡙",
+		"⡚",
+		"⡛",
+		"⡜",
+		"⡝",
+		"⡞",
+		"⡟",
+		"⠠",
+		"⠡",
+		"⠢",
+		"⠣",
+		"⠤",
+		"⠥",
+		"⠦",
+		"⠧",
+		"⡠",
+		"⡡",
+		"⡢",
+		"⡣",
+		"⡤",
+		"⡥",
+		"⡦",
+		"⡧",
+		"⠨",
+		"⠩",
+		"⠪",
+		"⠫",
+		"⠬",
+		"⠭",
+		"⠮",
+		"⠯",
+		"⡨",
+		"⡩",
+		"⡪",
+		"⡫",
+		"⡬",
+		"⡭",
+		"⡮",
+		"⡯",
+		"⠰",
+		"⠱",
+		"⠲",
+		"⠳",
+		"⠴",
+		"⠵",
+		"⠶",
+		"⠷",
+		"⡰",
+		"⡱",
+		"⡲",
+		"⡳",
+		"⡴",
+		"⡵",
+		"⡶",
+		"⡷",
+		"⠸",
+		"⠹",
+		"⠺",
+		"⠻",
+		"⠼",
+		"⠽",
+		"⠾",
+		"⠿",
+		"⡸",
+		"⡹",
+		"⡺",
+		"⡻",
+		"⡼",
+		"⡽",
+		"⡾",
+		"⡿",
+		"⢀",
+		"⢁",
+		"⢂",
+		"⢃",
+		"⢄",
+		"⢅",
+		"⢆",
+		"⢇",
+		"⣀",
+		"⣁",
+		"⣂",
+		"⣃",
+		"⣄",
+		"⣅",
+		"⣆",
+		"⣇",
+		"⢈",
+		"⢉",
+		"⢊",
+		"⢋",
+		"⢌",
+		"⢍",
+		"⢎",
+		"⢏",
+		"⣈",
+		"⣉",
+		"⣊",
+		"⣋",
+		"⣌",
+		"⣍",
+		"⣎",
+		"⣏",
+		"⢐",
+		"⢑",
+		"⢒",
+		"⢓",
+		"⢔",
+		"⢕",
+		"⢖",
+		"⢗",
+		"⣐",
+		"⣑",
+		"⣒",
+		"⣓",
+		"⣔",
+		"⣕",
+		"⣖",
+		"⣗",
+		"⢘",
+		"⢙",
+		"⢚",
+		"⢛",
+		"⢜",
+		"⢝",
+		"⢞",
+		"⢟",
+		"⣘",
+		"⣙",
+		"⣚",
+		"⣛",
+		"⣜",
+		"⣝",
+		"⣞",
+		"⣟",
+		"⢠",
+		"⢡",
+		"⢢",
+		"⢣",
+		"⢤",
+		"⢥",
+		"⢦",
+		"⢧",
+		"⣠",
+		"⣡",
+		"⣢",
+		"⣣",
+		"⣤",
+		"⣥",
+		"⣦",
+		"⣧",
+		"⢨",
+		"⢩",
+		"⢪",
+		"⢫",
+		"⢬",
+		"⢭",
+		"⢮",
+		"⢯",
+		"⣨",
+		"⣩",
+		"⣪",
+		"⣫",
+		"⣬",
+		"⣭",
+		"⣮",
+		"⣯",
+		"⢰",
+		"⢱",
+		"⢲",
+		"⢳",
+		"⢴",
+		"⢵",
+		"⢶",
+		"⢷",
+		"⣰",
+		"⣱",
+		"⣲",
+		"⣳",
+		"⣴",
+		"⣵",
+		"⣶",
+		"⣷",
+		"⢸",
+		"⢹",
+		"⢺",
+		"⢻",
+		"⢼",
+		"⢽",
+		"⢾",
+		"⢿",
+		"⣸",
+		"⣹",
+		"⣺",
+		"⣻",
+		"⣼",
+		"⣽",
+		"⣾",
+		"⣿"
+	]
+};
+var sand = {
+	interval: 80,
+	frames: [
+		"⠁",
+		"⠂",
+		"⠄",
+		"⡀",
+		"⡈",
+		"⡐",
+		"⡠",
+		"⣀",
+		"⣁",
+		"⣂",
+		"⣄",
+		"⣌",
+		"⣔",
+		"⣤",
+		"⣥",
+		"⣦",
+		"⣮",
+		"⣶",
+		"⣷",
+		"⣿",
+		"⡿",
+		"⠿",
+		"⢟",
+		"⠟",
+		"⡛",
+		"⠛",
+		"⠫",
+		"⢋",
+		"⠋",
+		"⠍",
+		"⡉",
+		"⠉",
+		"⠑",
+		"⠡",
+		"⢁"
+	]
+};
+var line = {
+	interval: 130,
+	frames: [
+		"-",
+		"\\",
+		"|",
+		"/"
+	]
+};
+var line2 = {
+	interval: 100,
+	frames: [
+		"⠂",
+		"-",
+		"–",
+		"—",
+		"–",
+		"-"
+	]
+};
+var pipe = {
+	interval: 100,
+	frames: [
+		"┤",
+		"┘",
+		"┴",
+		"└",
+		"├",
+		"┌",
+		"┬",
+		"┐"
+	]
+};
+var simpleDots = {
+	interval: 400,
+	frames: [
+		".  ",
+		".. ",
+		"...",
+		"   "
+	]
+};
+var simpleDotsScrolling = {
+	interval: 200,
+	frames: [
+		".  ",
+		".. ",
+		"...",
+		" ..",
+		"  .",
+		"   "
+	]
+};
+var star = {
+	interval: 70,
+	frames: [
+		"✶",
+		"✸",
+		"✹",
+		"✺",
+		"✹",
+		"✷"
+	]
+};
+var star2 = {
+	interval: 80,
+	frames: [
+		"+",
+		"x",
+		"*"
+	]
+};
+var flip = {
+	interval: 70,
+	frames: [
+		"_",
+		"_",
+		"_",
+		"-",
+		"`",
+		"`",
+		"'",
+		"´",
+		"-",
+		"_",
+		"_",
+		"_"
+	]
+};
+var hamburger = {
+	interval: 100,
+	frames: [
+		"☱",
+		"☲",
+		"☴"
+	]
+};
+var growVertical = {
+	interval: 120,
+	frames: [
+		"▁",
+		"▃",
+		"▄",
+		"▅",
+		"▆",
+		"▇",
+		"▆",
+		"▅",
+		"▄",
+		"▃"
+	]
+};
+var growHorizontal = {
+	interval: 120,
+	frames: [
+		"▏",
+		"▎",
+		"▍",
+		"▌",
+		"▋",
+		"▊",
+		"▉",
+		"▊",
+		"▋",
+		"▌",
+		"▍",
+		"▎"
+	]
+};
+var balloon = {
+	interval: 140,
+	frames: [
+		" ",
+		".",
+		"o",
+		"O",
+		"@",
+		"*",
+		" "
+	]
+};
+var balloon2 = {
+	interval: 120,
+	frames: [
+		".",
+		"o",
+		"O",
+		"°",
+		"O",
+		"o",
+		"."
+	]
+};
+var noise = {
+	interval: 100,
+	frames: [
+		"▓",
+		"▒",
+		"░"
+	]
+};
+var bounce = {
+	interval: 120,
+	frames: [
+		"⠁",
+		"⠂",
+		"⠄",
+		"⠂"
+	]
+};
+var boxBounce = {
+	interval: 120,
+	frames: [
+		"▖",
+		"▘",
+		"▝",
+		"▗"
+	]
+};
+var boxBounce2 = {
+	interval: 100,
+	frames: [
+		"▌",
+		"▀",
+		"▐",
+		"▄"
+	]
+};
+var triangle = {
+	interval: 50,
+	frames: [
+		"◢",
+		"◣",
+		"◤",
+		"◥"
+	]
+};
+var binary = {
+	interval: 80,
+	frames: [
+		"010010",
+		"001100",
+		"100101",
+		"111010",
+		"111101",
+		"010111",
+		"101011",
+		"111000",
+		"110011",
+		"110101"
+	]
+};
+var arc = {
+	interval: 100,
+	frames: [
+		"◜",
+		"◠",
+		"◝",
+		"◞",
+		"◡",
+		"◟"
+	]
+};
+var circle = {
+	interval: 120,
+	frames: [
+		"◡",
+		"⊙",
+		"◠"
+	]
+};
+var squareCorners = {
+	interval: 180,
+	frames: [
+		"◰",
+		"◳",
+		"◲",
+		"◱"
+	]
+};
+var circleQuarters = {
+	interval: 120,
+	frames: [
+		"◴",
+		"◷",
+		"◶",
+		"◵"
+	]
+};
+var circleHalves = {
+	interval: 50,
+	frames: [
+		"◐",
+		"◓",
+		"◑",
+		"◒"
+	]
+};
+var squish = {
+	interval: 100,
+	frames: [
+		"╫",
+		"╪"
+	]
+};
+var toggle = {
+	interval: 250,
+	frames: [
+		"⊶",
+		"⊷"
+	]
+};
+var toggle2 = {
+	interval: 80,
+	frames: [
+		"▫",
+		"▪"
+	]
+};
+var toggle3 = {
+	interval: 120,
+	frames: [
+		"□",
+		"■"
+	]
+};
+var toggle4 = {
+	interval: 100,
+	frames: [
+		"■",
+		"□",
+		"▪",
+		"▫"
+	]
+};
+var toggle5 = {
+	interval: 100,
+	frames: [
+		"▮",
+		"▯"
+	]
+};
+var toggle6 = {
+	interval: 300,
+	frames: [
+		"ဝ",
+		"၀"
+	]
+};
+var toggle7 = {
+	interval: 80,
+	frames: [
+		"⦾",
+		"⦿"
+	]
+};
+var toggle8 = {
+	interval: 100,
+	frames: [
+		"◍",
+		"◌"
+	]
+};
+var toggle9 = {
+	interval: 100,
+	frames: [
+		"◉",
+		"◎"
+	]
+};
+var toggle10 = {
+	interval: 100,
+	frames: [
+		"㊂",
+		"㊀",
+		"㊁"
+	]
+};
+var toggle11 = {
+	interval: 50,
+	frames: [
+		"⧇",
+		"⧆"
+	]
+};
+var toggle12 = {
+	interval: 120,
+	frames: [
+		"☗",
+		"☖"
+	]
+};
+var toggle13 = {
+	interval: 80,
+	frames: [
+		"=",
+		"*",
+		"-"
+	]
+};
+var arrow = {
+	interval: 100,
+	frames: [
+		"←",
+		"↖",
+		"↑",
+		"↗",
+		"→",
+		"↘",
+		"↓",
+		"↙"
+	]
+};
+var arrow2 = {
+	interval: 80,
+	frames: [
+		"⬆️ ",
+		"↗️ ",
+		"➡️ ",
+		"↘️ ",
+		"⬇️ ",
+		"↙️ ",
+		"⬅️ ",
+		"↖️ "
+	]
+};
+var arrow3 = {
+	interval: 120,
+	frames: [
+		"▹▹▹▹▹",
+		"▸▹▹▹▹",
+		"▹▸▹▹▹",
+		"▹▹▸▹▹",
+		"▹▹▹▸▹",
+		"▹▹▹▹▸"
+	]
+};
+var bouncingBar = {
+	interval: 80,
+	frames: [
+		"[    ]",
+		"[=   ]",
+		"[==  ]",
+		"[=== ]",
+		"[====]",
+		"[ ===]",
+		"[  ==]",
+		"[   =]",
+		"[    ]",
+		"[   =]",
+		"[  ==]",
+		"[ ===]",
+		"[====]",
+		"[=== ]",
+		"[==  ]",
+		"[=   ]"
+	]
+};
+var bouncingBall = {
+	interval: 80,
+	frames: [
+		"( ●    )",
+		"(  ●   )",
+		"(   ●  )",
+		"(    ● )",
+		"(     ●)",
+		"(    ● )",
+		"(   ●  )",
+		"(  ●   )",
+		"( ●    )",
+		"(●     )"
+	]
+};
+var smiley = {
+	interval: 200,
+	frames: [
+		"😄 ",
+		"😝 "
+	]
+};
+var monkey = {
+	interval: 300,
+	frames: [
+		"🙈 ",
+		"🙈 ",
+		"🙉 ",
+		"🙊 "
+	]
+};
+var hearts = {
+	interval: 100,
+	frames: [
+		"💛 ",
+		"💙 ",
+		"💜 ",
+		"💚 ",
+		"❤️ "
+	]
+};
+var clock = {
+	interval: 100,
+	frames: [
+		"🕛 ",
+		"🕐 ",
+		"🕑 ",
+		"🕒 ",
+		"🕓 ",
+		"🕔 ",
+		"🕕 ",
+		"🕖 ",
+		"🕗 ",
+		"🕘 ",
+		"🕙 ",
+		"🕚 "
+	]
+};
+var earth = {
+	interval: 180,
+	frames: [
+		"🌍 ",
+		"🌎 ",
+		"🌏 "
+	]
+};
+var material = {
+	interval: 17,
+	frames: [
+		"█▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁",
+		"██▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁",
+		"███▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁",
+		"████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁",
+		"██████▁▁▁▁▁▁▁▁▁▁▁▁▁▁",
+		"██████▁▁▁▁▁▁▁▁▁▁▁▁▁▁",
+		"███████▁▁▁▁▁▁▁▁▁▁▁▁▁",
+		"████████▁▁▁▁▁▁▁▁▁▁▁▁",
+		"█████████▁▁▁▁▁▁▁▁▁▁▁",
+		"█████████▁▁▁▁▁▁▁▁▁▁▁",
+		"██████████▁▁▁▁▁▁▁▁▁▁",
+		"███████████▁▁▁▁▁▁▁▁▁",
+		"█████████████▁▁▁▁▁▁▁",
+		"██████████████▁▁▁▁▁▁",
+		"██████████████▁▁▁▁▁▁",
+		"▁██████████████▁▁▁▁▁",
+		"▁██████████████▁▁▁▁▁",
+		"▁██████████████▁▁▁▁▁",
+		"▁▁██████████████▁▁▁▁",
+		"▁▁▁██████████████▁▁▁",
+		"▁▁▁▁█████████████▁▁▁",
+		"▁▁▁▁██████████████▁▁",
+		"▁▁▁▁██████████████▁▁",
+		"▁▁▁▁▁██████████████▁",
+		"▁▁▁▁▁██████████████▁",
+		"▁▁▁▁▁██████████████▁",
+		"▁▁▁▁▁▁██████████████",
+		"▁▁▁▁▁▁██████████████",
+		"▁▁▁▁▁▁▁█████████████",
+		"▁▁▁▁▁▁▁█████████████",
+		"▁▁▁▁▁▁▁▁████████████",
+		"▁▁▁▁▁▁▁▁████████████",
+		"▁▁▁▁▁▁▁▁▁███████████",
+		"▁▁▁▁▁▁▁▁▁███████████",
+		"▁▁▁▁▁▁▁▁▁▁██████████",
+		"▁▁▁▁▁▁▁▁▁▁██████████",
+		"▁▁▁▁▁▁▁▁▁▁▁▁████████",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁███████",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁▁██████",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁█████",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁█████",
+		"█▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁████",
+		"██▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁███",
+		"██▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁███",
+		"███▁▁▁▁▁▁▁▁▁▁▁▁▁▁███",
+		"████▁▁▁▁▁▁▁▁▁▁▁▁▁▁██",
+		"█████▁▁▁▁▁▁▁▁▁▁▁▁▁▁█",
+		"█████▁▁▁▁▁▁▁▁▁▁▁▁▁▁█",
+		"██████▁▁▁▁▁▁▁▁▁▁▁▁▁█",
+		"████████▁▁▁▁▁▁▁▁▁▁▁▁",
+		"█████████▁▁▁▁▁▁▁▁▁▁▁",
+		"█████████▁▁▁▁▁▁▁▁▁▁▁",
+		"█████████▁▁▁▁▁▁▁▁▁▁▁",
+		"█████████▁▁▁▁▁▁▁▁▁▁▁",
+		"███████████▁▁▁▁▁▁▁▁▁",
+		"████████████▁▁▁▁▁▁▁▁",
+		"████████████▁▁▁▁▁▁▁▁",
+		"██████████████▁▁▁▁▁▁",
+		"██████████████▁▁▁▁▁▁",
+		"▁██████████████▁▁▁▁▁",
+		"▁██████████████▁▁▁▁▁",
+		"▁▁▁█████████████▁▁▁▁",
+		"▁▁▁▁▁████████████▁▁▁",
+		"▁▁▁▁▁████████████▁▁▁",
+		"▁▁▁▁▁▁███████████▁▁▁",
+		"▁▁▁▁▁▁▁▁█████████▁▁▁",
+		"▁▁▁▁▁▁▁▁█████████▁▁▁",
+		"▁▁▁▁▁▁▁▁▁█████████▁▁",
+		"▁▁▁▁▁▁▁▁▁█████████▁▁",
+		"▁▁▁▁▁▁▁▁▁▁█████████▁",
+		"▁▁▁▁▁▁▁▁▁▁▁████████▁",
+		"▁▁▁▁▁▁▁▁▁▁▁████████▁",
+		"▁▁▁▁▁▁▁▁▁▁▁▁███████▁",
+		"▁▁▁▁▁▁▁▁▁▁▁▁███████▁",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁███████",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁███████",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁█████",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁████",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁████",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁████",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁███",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁███",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁██",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁██",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁██",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁█",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁█",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁█",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁",
+		"▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁"
+	]
+};
+var moon = {
+	interval: 80,
+	frames: [
+		"🌑 ",
+		"🌒 ",
+		"🌓 ",
+		"🌔 ",
+		"🌕 ",
+		"🌖 ",
+		"🌗 ",
+		"🌘 "
+	]
+};
+var runner = {
+	interval: 140,
+	frames: [
+		"🚶 ",
+		"🏃 "
+	]
+};
+var pong = {
+	interval: 80,
+	frames: [
+		"▐⠂       ▌",
+		"▐⠈       ▌",
+		"▐ ⠂      ▌",
+		"▐ ⠠      ▌",
+		"▐  ⡀     ▌",
+		"▐  ⠠     ▌",
+		"▐   ⠂    ▌",
+		"▐   ⠈    ▌",
+		"▐    ⠂   ▌",
+		"▐    ⠠   ▌",
+		"▐     ⡀  ▌",
+		"▐     ⠠  ▌",
+		"▐      ⠂ ▌",
+		"▐      ⠈ ▌",
+		"▐       ⠂▌",
+		"▐       ⠠▌",
+		"▐       ⡀▌",
+		"▐      ⠠ ▌",
+		"▐      ⠂ ▌",
+		"▐     ⠈  ▌",
+		"▐     ⠂  ▌",
+		"▐    ⠠   ▌",
+		"▐    ⡀   ▌",
+		"▐   ⠠    ▌",
+		"▐   ⠂    ▌",
+		"▐  ⠈     ▌",
+		"▐  ⠂     ▌",
+		"▐ ⠠      ▌",
+		"▐ ⡀      ▌",
+		"▐⠠       ▌"
+	]
+};
+var shark = {
+	interval: 120,
+	frames: [
+		"▐|\\____________▌",
+		"▐_|\\___________▌",
+		"▐__|\\__________▌",
+		"▐___|\\_________▌",
+		"▐____|\\________▌",
+		"▐_____|\\_______▌",
+		"▐______|\\______▌",
+		"▐_______|\\_____▌",
+		"▐________|\\____▌",
+		"▐_________|\\___▌",
+		"▐__________|\\__▌",
+		"▐___________|\\_▌",
+		"▐____________|\\▌",
+		"▐____________/|▌",
+		"▐___________/|_▌",
+		"▐__________/|__▌",
+		"▐_________/|___▌",
+		"▐________/|____▌",
+		"▐_______/|_____▌",
+		"▐______/|______▌",
+		"▐_____/|_______▌",
+		"▐____/|________▌",
+		"▐___/|_________▌",
+		"▐__/|__________▌",
+		"▐_/|___________▌",
+		"▐/|____________▌"
+	]
+};
+var dqpb = {
+	interval: 100,
+	frames: [
+		"d",
+		"q",
+		"p",
+		"b"
+	]
+};
+var weather = {
+	interval: 100,
+	frames: [
+		"☀️ ",
+		"☀️ ",
+		"☀️ ",
+		"🌤 ",
+		"⛅️ ",
+		"🌥 ",
+		"☁️ ",
+		"🌧 ",
+		"🌨 ",
+		"🌧 ",
+		"🌨 ",
+		"🌧 ",
+		"🌨 ",
+		"⛈ ",
+		"🌨 ",
+		"🌧 ",
+		"🌨 ",
+		"☁️ ",
+		"🌥 ",
+		"⛅️ ",
+		"🌤 ",
+		"☀️ ",
+		"☀️ "
+	]
+};
+var christmas = {
+	interval: 400,
+	frames: [
+		"🌲",
+		"🎄"
+	]
+};
+var grenade = {
+	interval: 80,
+	frames: [
+		"،  ",
+		"′  ",
+		" ´ ",
+		" ‾ ",
+		"  ⸌",
+		"  ⸊",
+		"  |",
+		"  ⁎",
+		"  ⁕",
+		" ෴ ",
+		"  ⁓",
+		"   ",
+		"   ",
+		"   "
+	]
+};
+var point = {
+	interval: 125,
+	frames: [
+		"∙∙∙",
+		"●∙∙",
+		"∙●∙",
+		"∙∙●",
+		"∙∙∙"
+	]
+};
+var layer = {
+	interval: 150,
+	frames: [
+		"-",
+		"=",
+		"≡"
+	]
+};
+var betaWave = {
+	interval: 80,
+	frames: [
+		"ρββββββ",
+		"βρβββββ",
+		"ββρββββ",
+		"βββρβββ",
+		"ββββρββ",
+		"βββββρβ",
+		"ββββββρ"
+	]
+};
+var fingerDance = {
+	interval: 160,
+	frames: [
+		"🤘 ",
+		"🤟 ",
+		"🖖 ",
+		"✋ ",
+		"🤚 ",
+		"👆 "
+	]
+};
+var fistBump = {
+	interval: 80,
+	frames: [
+		"🤜　　　　🤛 ",
+		"🤜　　　　🤛 ",
+		"🤜　　　　🤛 ",
+		"　🤜　　🤛　 ",
+		"　　🤜🤛　　 ",
+		"　🤜✨🤛　　 ",
+		"🤜　✨　🤛　 "
+	]
+};
+var soccerHeader = {
+	interval: 80,
+	frames: [
+		" 🧑⚽️       🧑 ",
+		"🧑  ⚽️      🧑 ",
+		"🧑   ⚽️     🧑 ",
+		"🧑    ⚽️    🧑 ",
+		"🧑     ⚽️   🧑 ",
+		"🧑      ⚽️  🧑 ",
+		"🧑       ⚽️🧑  ",
+		"🧑      ⚽️  🧑 ",
+		"🧑     ⚽️   🧑 ",
+		"🧑    ⚽️    🧑 ",
+		"🧑   ⚽️     🧑 ",
+		"🧑  ⚽️      🧑 "
+	]
+};
+var mindblown = {
+	interval: 160,
+	frames: [
+		"😐 ",
+		"😐 ",
+		"😮 ",
+		"😮 ",
+		"😦 ",
+		"😦 ",
+		"😧 ",
+		"😧 ",
+		"🤯 ",
+		"💥 ",
+		"✨ ",
+		"　 ",
+		"　 ",
+		"　 "
+	]
+};
+var speaker = {
+	interval: 160,
+	frames: [
+		"🔈 ",
+		"🔉 ",
+		"🔊 ",
+		"🔉 "
+	]
+};
+var orangePulse = {
+	interval: 100,
+	frames: [
+		"🔸 ",
+		"🔶 ",
+		"🟠 ",
+		"🟠 ",
+		"🔶 "
+	]
+};
+var bluePulse = {
+	interval: 100,
+	frames: [
+		"🔹 ",
+		"🔷 ",
+		"🔵 ",
+		"🔵 ",
+		"🔷 "
+	]
+};
+var orangeBluePulse = {
+	interval: 100,
+	frames: [
+		"🔸 ",
+		"🔶 ",
+		"🟠 ",
+		"🟠 ",
+		"🔶 ",
+		"🔹 ",
+		"🔷 ",
+		"🔵 ",
+		"🔵 ",
+		"🔷 "
+	]
+};
+var timeTravel = {
+	interval: 100,
+	frames: [
+		"🕛 ",
+		"🕚 ",
+		"🕙 ",
+		"🕘 ",
+		"🕗 ",
+		"🕖 ",
+		"🕕 ",
+		"🕔 ",
+		"🕓 ",
+		"🕒 ",
+		"🕑 ",
+		"🕐 "
+	]
+};
+var aesthetic = {
+	interval: 80,
+	frames: [
+		"▰▱▱▱▱▱▱",
+		"▰▰▱▱▱▱▱",
+		"▰▰▰▱▱▱▱",
+		"▰▰▰▰▱▱▱",
+		"▰▰▰▰▰▱▱",
+		"▰▰▰▰▰▰▱",
+		"▰▰▰▰▰▰▰",
+		"▰▱▱▱▱▱▱"
+	]
+};
+var dwarfFortress = {
+	interval: 80,
+	frames: [
+		" ██████£££  ",
+		"☺██████£££  ",
+		"☺██████£££  ",
+		"☺▓█████£££  ",
+		"☺▓█████£££  ",
+		"☺▒█████£££  ",
+		"☺▒█████£££  ",
+		"☺░█████£££  ",
+		"☺░█████£££  ",
+		"☺ █████£££  ",
+		" ☺█████£££  ",
+		" ☺█████£££  ",
+		" ☺▓████£££  ",
+		" ☺▓████£££  ",
+		" ☺▒████£££  ",
+		" ☺▒████£££  ",
+		" ☺░████£££  ",
+		" ☺░████£££  ",
+		" ☺ ████£££  ",
+		"  ☺████£££  ",
+		"  ☺████£££  ",
+		"  ☺▓███£££  ",
+		"  ☺▓███£££  ",
+		"  ☺▒███£££  ",
+		"  ☺▒███£££  ",
+		"  ☺░███£££  ",
+		"  ☺░███£££  ",
+		"  ☺ ███£££  ",
+		"   ☺███£££  ",
+		"   ☺███£££  ",
+		"   ☺▓██£££  ",
+		"   ☺▓██£££  ",
+		"   ☺▒██£££  ",
+		"   ☺▒██£££  ",
+		"   ☺░██£££  ",
+		"   ☺░██£££  ",
+		"   ☺ ██£££  ",
+		"    ☺██£££  ",
+		"    ☺██£££  ",
+		"    ☺▓█£££  ",
+		"    ☺▓█£££  ",
+		"    ☺▒█£££  ",
+		"    ☺▒█£££  ",
+		"    ☺░█£££  ",
+		"    ☺░█£££  ",
+		"    ☺ █£££  ",
+		"     ☺█£££  ",
+		"     ☺█£££  ",
+		"     ☺▓£££  ",
+		"     ☺▓£££  ",
+		"     ☺▒£££  ",
+		"     ☺▒£££  ",
+		"     ☺░£££  ",
+		"     ☺░£££  ",
+		"     ☺ £££  ",
+		"      ☺£££  ",
+		"      ☺£££  ",
+		"      ☺▓££  ",
+		"      ☺▓££  ",
+		"      ☺▒££  ",
+		"      ☺▒££  ",
+		"      ☺░££  ",
+		"      ☺░££  ",
+		"      ☺ ££  ",
+		"       ☺££  ",
+		"       ☺££  ",
+		"       ☺▓£  ",
+		"       ☺▓£  ",
+		"       ☺▒£  ",
+		"       ☺▒£  ",
+		"       ☺░£  ",
+		"       ☺░£  ",
+		"       ☺ £  ",
+		"        ☺£  ",
+		"        ☺£  ",
+		"        ☺▓  ",
+		"        ☺▓  ",
+		"        ☺▒  ",
+		"        ☺▒  ",
+		"        ☺░  ",
+		"        ☺░  ",
+		"        ☺   ",
+		"        ☺  &",
+		"        ☺ ☼&",
+		"       ☺ ☼ &",
+		"       ☺☼  &",
+		"      ☺☼  & ",
+		"      ‼   & ",
+		"     ☺   &  ",
+		"    ‼    &  ",
+		"   ☺    &   ",
+		"  ‼     &   ",
+		" ☺     &    ",
+		"‼      &    ",
+		"      &     ",
+		"      &     ",
+		"     &   ░  ",
+		"     &   ▒  ",
+		"    &    ▓  ",
+		"    &    £  ",
+		"   &    ░£  ",
+		"   &    ▒£  ",
+		"  &     ▓£  ",
+		"  &     ££  ",
+		" &     ░££  ",
+		" &     ▒££  ",
+		"&      ▓££  ",
+		"&      £££  ",
+		"      ░£££  ",
+		"      ▒£££  ",
+		"      ▓£££  ",
+		"      █£££  ",
+		"     ░█£££  ",
+		"     ▒█£££  ",
+		"     ▓█£££  ",
+		"     ██£££  ",
+		"    ░██£££  ",
+		"    ▒██£££  ",
+		"    ▓██£££  ",
+		"    ███£££  ",
+		"   ░███£££  ",
+		"   ▒███£££  ",
+		"   ▓███£££  ",
+		"   ████£££  ",
+		"  ░████£££  ",
+		"  ▒████£££  ",
+		"  ▓████£££  ",
+		"  █████£££  ",
+		" ░█████£££  ",
+		" ▒█████£££  ",
+		" ▓█████£££  ",
+		" ██████£££  ",
+		" ██████£££  "
+	]
+};
+var require$$0 = {
+	dots: dots,
+	dots2: dots2,
+	dots3: dots3,
+	dots4: dots4,
+	dots5: dots5,
+	dots6: dots6,
+	dots7: dots7,
+	dots8: dots8,
+	dots9: dots9,
+	dots10: dots10,
+	dots11: dots11,
+	dots12: dots12,
+	dots13: dots13,
+	dots8Bit: dots8Bit,
+	sand: sand,
+	line: line,
+	line2: line2,
+	pipe: pipe,
+	simpleDots: simpleDots,
+	simpleDotsScrolling: simpleDotsScrolling,
+	star: star,
+	star2: star2,
+	flip: flip,
+	hamburger: hamburger,
+	growVertical: growVertical,
+	growHorizontal: growHorizontal,
+	balloon: balloon,
+	balloon2: balloon2,
+	noise: noise,
+	bounce: bounce,
+	boxBounce: boxBounce,
+	boxBounce2: boxBounce2,
+	triangle: triangle,
+	binary: binary,
+	arc: arc,
+	circle: circle,
+	squareCorners: squareCorners,
+	circleQuarters: circleQuarters,
+	circleHalves: circleHalves,
+	squish: squish,
+	toggle: toggle,
+	toggle2: toggle2,
+	toggle3: toggle3,
+	toggle4: toggle4,
+	toggle5: toggle5,
+	toggle6: toggle6,
+	toggle7: toggle7,
+	toggle8: toggle8,
+	toggle9: toggle9,
+	toggle10: toggle10,
+	toggle11: toggle11,
+	toggle12: toggle12,
+	toggle13: toggle13,
+	arrow: arrow,
+	arrow2: arrow2,
+	arrow3: arrow3,
+	bouncingBar: bouncingBar,
+	bouncingBall: bouncingBall,
+	smiley: smiley,
+	monkey: monkey,
+	hearts: hearts,
+	clock: clock,
+	earth: earth,
+	material: material,
+	moon: moon,
+	runner: runner,
+	pong: pong,
+	shark: shark,
+	dqpb: dqpb,
+	weather: weather,
+	christmas: christmas,
+	grenade: grenade,
+	point: point,
+	layer: layer,
+	betaWave: betaWave,
+	fingerDance: fingerDance,
+	fistBump: fistBump,
+	soccerHeader: soccerHeader,
+	mindblown: mindblown,
+	speaker: speaker,
+	orangePulse: orangePulse,
+	bluePulse: bluePulse,
+	orangeBluePulse: orangeBluePulse,
+	timeTravel: timeTravel,
+	aesthetic: aesthetic,
+	dwarfFortress: dwarfFortress
+};
+
+var cliSpinners$1;
+var hasRequiredCliSpinners;
+
+function requireCliSpinners () {
+	if (hasRequiredCliSpinners) return cliSpinners$1;
+	hasRequiredCliSpinners = 1;
+
+	const spinners = Object.assign({}, require$$0); // eslint-disable-line import/extensions
+
+	const spinnersList = Object.keys(spinners);
+
+	Object.defineProperty(spinners, 'random', {
+		get() {
+			const randomIndex = Math.floor(Math.random() * spinnersList.length);
+			const spinnerName = spinnersList[randomIndex];
+			return spinners[spinnerName];
+		}
+	});
+
+	cliSpinners$1 = spinners;
+	return cliSpinners$1;
+}
+
+var cliSpinnersExports = requireCliSpinners();
+var cliSpinners = /*@__PURE__*/getDefaultExportFromCjs(cliSpinnersExports);
+
+const logSymbols = {
+	info: 'ℹ️',
+	success: '✅',
+	warning: '⚠️',
+	error: '❌️',
+};
+
+function ansiRegex({onlyFirst = false} = {}) {
+	// Valid string terminator sequences are BEL, ESC\, and 0x9c
+	const ST = '(?:\\u0007|\\u001B\\u005C|\\u009C)';
+	const pattern = [
+		`[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]+)*|[a-zA-Z\\d]+(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?${ST})`,
+		'(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-nq-uy=><~]))',
+	].join('|');
+
+	return new RegExp(pattern, onlyFirst ? undefined : 'g');
+}
+
+const regex = ansiRegex();
+
+function stripAnsi(string) {
+	if (typeof string !== 'string') {
+		throw new TypeError(`Expected a \`string\`, got \`${typeof string}\``);
+	}
+
+	// Even though the regex is global, we don't need to reset the `.lastIndex`
+	// because unlike `.exec()` and `.test()`, `.replace()` does it automatically
+	// and doing it manually has a performance penalty.
+	return string.replace(regex, '');
+}
+
+// Generated code.
+
+function isAmbiguous(x) {
+	return x === 0xA1
+		|| x === 0xA4
+		|| x === 0xA7
+		|| x === 0xA8
+		|| x === 0xAA
+		|| x === 0xAD
+		|| x === 0xAE
+		|| x >= 0xB0 && x <= 0xB4
+		|| x >= 0xB6 && x <= 0xBA
+		|| x >= 0xBC && x <= 0xBF
+		|| x === 0xC6
+		|| x === 0xD0
+		|| x === 0xD7
+		|| x === 0xD8
+		|| x >= 0xDE && x <= 0xE1
+		|| x === 0xE6
+		|| x >= 0xE8 && x <= 0xEA
+		|| x === 0xEC
+		|| x === 0xED
+		|| x === 0xF0
+		|| x === 0xF2
+		|| x === 0xF3
+		|| x >= 0xF7 && x <= 0xFA
+		|| x === 0xFC
+		|| x === 0xFE
+		|| x === 0x101
+		|| x === 0x111
+		|| x === 0x113
+		|| x === 0x11B
+		|| x === 0x126
+		|| x === 0x127
+		|| x === 0x12B
+		|| x >= 0x131 && x <= 0x133
+		|| x === 0x138
+		|| x >= 0x13F && x <= 0x142
+		|| x === 0x144
+		|| x >= 0x148 && x <= 0x14B
+		|| x === 0x14D
+		|| x === 0x152
+		|| x === 0x153
+		|| x === 0x166
+		|| x === 0x167
+		|| x === 0x16B
+		|| x === 0x1CE
+		|| x === 0x1D0
+		|| x === 0x1D2
+		|| x === 0x1D4
+		|| x === 0x1D6
+		|| x === 0x1D8
+		|| x === 0x1DA
+		|| x === 0x1DC
+		|| x === 0x251
+		|| x === 0x261
+		|| x === 0x2C4
+		|| x === 0x2C7
+		|| x >= 0x2C9 && x <= 0x2CB
+		|| x === 0x2CD
+		|| x === 0x2D0
+		|| x >= 0x2D8 && x <= 0x2DB
+		|| x === 0x2DD
+		|| x === 0x2DF
+		|| x >= 0x300 && x <= 0x36F
+		|| x >= 0x391 && x <= 0x3A1
+		|| x >= 0x3A3 && x <= 0x3A9
+		|| x >= 0x3B1 && x <= 0x3C1
+		|| x >= 0x3C3 && x <= 0x3C9
+		|| x === 0x401
+		|| x >= 0x410 && x <= 0x44F
+		|| x === 0x451
+		|| x === 0x2010
+		|| x >= 0x2013 && x <= 0x2016
+		|| x === 0x2018
+		|| x === 0x2019
+		|| x === 0x201C
+		|| x === 0x201D
+		|| x >= 0x2020 && x <= 0x2022
+		|| x >= 0x2024 && x <= 0x2027
+		|| x === 0x2030
+		|| x === 0x2032
+		|| x === 0x2033
+		|| x === 0x2035
+		|| x === 0x203B
+		|| x === 0x203E
+		|| x === 0x2074
+		|| x === 0x207F
+		|| x >= 0x2081 && x <= 0x2084
+		|| x === 0x20AC
+		|| x === 0x2103
+		|| x === 0x2105
+		|| x === 0x2109
+		|| x === 0x2113
+		|| x === 0x2116
+		|| x === 0x2121
+		|| x === 0x2122
+		|| x === 0x2126
+		|| x === 0x212B
+		|| x === 0x2153
+		|| x === 0x2154
+		|| x >= 0x215B && x <= 0x215E
+		|| x >= 0x2160 && x <= 0x216B
+		|| x >= 0x2170 && x <= 0x2179
+		|| x === 0x2189
+		|| x >= 0x2190 && x <= 0x2199
+		|| x === 0x21B8
+		|| x === 0x21B9
+		|| x === 0x21D2
+		|| x === 0x21D4
+		|| x === 0x21E7
+		|| x === 0x2200
+		|| x === 0x2202
+		|| x === 0x2203
+		|| x === 0x2207
+		|| x === 0x2208
+		|| x === 0x220B
+		|| x === 0x220F
+		|| x === 0x2211
+		|| x === 0x2215
+		|| x === 0x221A
+		|| x >= 0x221D && x <= 0x2220
+		|| x === 0x2223
+		|| x === 0x2225
+		|| x >= 0x2227 && x <= 0x222C
+		|| x === 0x222E
+		|| x >= 0x2234 && x <= 0x2237
+		|| x === 0x223C
+		|| x === 0x223D
+		|| x === 0x2248
+		|| x === 0x224C
+		|| x === 0x2252
+		|| x === 0x2260
+		|| x === 0x2261
+		|| x >= 0x2264 && x <= 0x2267
+		|| x === 0x226A
+		|| x === 0x226B
+		|| x === 0x226E
+		|| x === 0x226F
+		|| x === 0x2282
+		|| x === 0x2283
+		|| x === 0x2286
+		|| x === 0x2287
+		|| x === 0x2295
+		|| x === 0x2299
+		|| x === 0x22A5
+		|| x === 0x22BF
+		|| x === 0x2312
+		|| x >= 0x2460 && x <= 0x24E9
+		|| x >= 0x24EB && x <= 0x254B
+		|| x >= 0x2550 && x <= 0x2573
+		|| x >= 0x2580 && x <= 0x258F
+		|| x >= 0x2592 && x <= 0x2595
+		|| x === 0x25A0
+		|| x === 0x25A1
+		|| x >= 0x25A3 && x <= 0x25A9
+		|| x === 0x25B2
+		|| x === 0x25B3
+		|| x === 0x25B6
+		|| x === 0x25B7
+		|| x === 0x25BC
+		|| x === 0x25BD
+		|| x === 0x25C0
+		|| x === 0x25C1
+		|| x >= 0x25C6 && x <= 0x25C8
+		|| x === 0x25CB
+		|| x >= 0x25CE && x <= 0x25D1
+		|| x >= 0x25E2 && x <= 0x25E5
+		|| x === 0x25EF
+		|| x === 0x2605
+		|| x === 0x2606
+		|| x === 0x2609
+		|| x === 0x260E
+		|| x === 0x260F
+		|| x === 0x261C
+		|| x === 0x261E
+		|| x === 0x2640
+		|| x === 0x2642
+		|| x === 0x2660
+		|| x === 0x2661
+		|| x >= 0x2663 && x <= 0x2665
+		|| x >= 0x2667 && x <= 0x266A
+		|| x === 0x266C
+		|| x === 0x266D
+		|| x === 0x266F
+		|| x === 0x269E
+		|| x === 0x269F
+		|| x === 0x26BF
+		|| x >= 0x26C6 && x <= 0x26CD
+		|| x >= 0x26CF && x <= 0x26D3
+		|| x >= 0x26D5 && x <= 0x26E1
+		|| x === 0x26E3
+		|| x === 0x26E8
+		|| x === 0x26E9
+		|| x >= 0x26EB && x <= 0x26F1
+		|| x === 0x26F4
+		|| x >= 0x26F6 && x <= 0x26F9
+		|| x === 0x26FB
+		|| x === 0x26FC
+		|| x === 0x26FE
+		|| x === 0x26FF
+		|| x === 0x273D
+		|| x >= 0x2776 && x <= 0x277F
+		|| x >= 0x2B56 && x <= 0x2B59
+		|| x >= 0x3248 && x <= 0x324F
+		|| x >= 0xE000 && x <= 0xF8FF
+		|| x >= 0xFE00 && x <= 0xFE0F
+		|| x === 0xFFFD
+		|| x >= 0x1F100 && x <= 0x1F10A
+		|| x >= 0x1F110 && x <= 0x1F12D
+		|| x >= 0x1F130 && x <= 0x1F169
+		|| x >= 0x1F170 && x <= 0x1F18D
+		|| x === 0x1F18F
+		|| x === 0x1F190
+		|| x >= 0x1F19B && x <= 0x1F1AC
+		|| x >= 0xE0100 && x <= 0xE01EF
+		|| x >= 0xF0000 && x <= 0xFFFFD
+		|| x >= 0x100000 && x <= 0x10FFFD;
+}
+
+function isFullWidth(x) {
+	return x === 0x3000
+		|| x >= 0xFF01 && x <= 0xFF60
+		|| x >= 0xFFE0 && x <= 0xFFE6;
+}
+
+function isWide(x) {
+	return x >= 0x1100 && x <= 0x115F
+		|| x === 0x231A
+		|| x === 0x231B
+		|| x === 0x2329
+		|| x === 0x232A
+		|| x >= 0x23E9 && x <= 0x23EC
+		|| x === 0x23F0
+		|| x === 0x23F3
+		|| x === 0x25FD
+		|| x === 0x25FE
+		|| x === 0x2614
+		|| x === 0x2615
+		|| x >= 0x2630 && x <= 0x2637
+		|| x >= 0x2648 && x <= 0x2653
+		|| x === 0x267F
+		|| x >= 0x268A && x <= 0x268F
+		|| x === 0x2693
+		|| x === 0x26A1
+		|| x === 0x26AA
+		|| x === 0x26AB
+		|| x === 0x26BD
+		|| x === 0x26BE
+		|| x === 0x26C4
+		|| x === 0x26C5
+		|| x === 0x26CE
+		|| x === 0x26D4
+		|| x === 0x26EA
+		|| x === 0x26F2
+		|| x === 0x26F3
+		|| x === 0x26F5
+		|| x === 0x26FA
+		|| x === 0x26FD
+		|| x === 0x2705
+		|| x === 0x270A
+		|| x === 0x270B
+		|| x === 0x2728
+		|| x === 0x274C
+		|| x === 0x274E
+		|| x >= 0x2753 && x <= 0x2755
+		|| x === 0x2757
+		|| x >= 0x2795 && x <= 0x2797
+		|| x === 0x27B0
+		|| x === 0x27BF
+		|| x === 0x2B1B
+		|| x === 0x2B1C
+		|| x === 0x2B50
+		|| x === 0x2B55
+		|| x >= 0x2E80 && x <= 0x2E99
+		|| x >= 0x2E9B && x <= 0x2EF3
+		|| x >= 0x2F00 && x <= 0x2FD5
+		|| x >= 0x2FF0 && x <= 0x2FFF
+		|| x >= 0x3001 && x <= 0x303E
+		|| x >= 0x3041 && x <= 0x3096
+		|| x >= 0x3099 && x <= 0x30FF
+		|| x >= 0x3105 && x <= 0x312F
+		|| x >= 0x3131 && x <= 0x318E
+		|| x >= 0x3190 && x <= 0x31E5
+		|| x >= 0x31EF && x <= 0x321E
+		|| x >= 0x3220 && x <= 0x3247
+		|| x >= 0x3250 && x <= 0xA48C
+		|| x >= 0xA490 && x <= 0xA4C6
+		|| x >= 0xA960 && x <= 0xA97C
+		|| x >= 0xAC00 && x <= 0xD7A3
+		|| x >= 0xF900 && x <= 0xFAFF
+		|| x >= 0xFE10 && x <= 0xFE19
+		|| x >= 0xFE30 && x <= 0xFE52
+		|| x >= 0xFE54 && x <= 0xFE66
+		|| x >= 0xFE68 && x <= 0xFE6B
+		|| x >= 0x16FE0 && x <= 0x16FE4
+		|| x === 0x16FF0
+		|| x === 0x16FF1
+		|| x >= 0x17000 && x <= 0x187F7
+		|| x >= 0x18800 && x <= 0x18CD5
+		|| x >= 0x18CFF && x <= 0x18D08
+		|| x >= 0x1AFF0 && x <= 0x1AFF3
+		|| x >= 0x1AFF5 && x <= 0x1AFFB
+		|| x === 0x1AFFD
+		|| x === 0x1AFFE
+		|| x >= 0x1B000 && x <= 0x1B122
+		|| x === 0x1B132
+		|| x >= 0x1B150 && x <= 0x1B152
+		|| x === 0x1B155
+		|| x >= 0x1B164 && x <= 0x1B167
+		|| x >= 0x1B170 && x <= 0x1B2FB
+		|| x >= 0x1D300 && x <= 0x1D356
+		|| x >= 0x1D360 && x <= 0x1D376
+		|| x === 0x1F004
+		|| x === 0x1F0CF
+		|| x === 0x1F18E
+		|| x >= 0x1F191 && x <= 0x1F19A
+		|| x >= 0x1F200 && x <= 0x1F202
+		|| x >= 0x1F210 && x <= 0x1F23B
+		|| x >= 0x1F240 && x <= 0x1F248
+		|| x === 0x1F250
+		|| x === 0x1F251
+		|| x >= 0x1F260 && x <= 0x1F265
+		|| x >= 0x1F300 && x <= 0x1F320
+		|| x >= 0x1F32D && x <= 0x1F335
+		|| x >= 0x1F337 && x <= 0x1F37C
+		|| x >= 0x1F37E && x <= 0x1F393
+		|| x >= 0x1F3A0 && x <= 0x1F3CA
+		|| x >= 0x1F3CF && x <= 0x1F3D3
+		|| x >= 0x1F3E0 && x <= 0x1F3F0
+		|| x === 0x1F3F4
+		|| x >= 0x1F3F8 && x <= 0x1F43E
+		|| x === 0x1F440
+		|| x >= 0x1F442 && x <= 0x1F4FC
+		|| x >= 0x1F4FF && x <= 0x1F53D
+		|| x >= 0x1F54B && x <= 0x1F54E
+		|| x >= 0x1F550 && x <= 0x1F567
+		|| x === 0x1F57A
+		|| x === 0x1F595
+		|| x === 0x1F596
+		|| x === 0x1F5A4
+		|| x >= 0x1F5FB && x <= 0x1F64F
+		|| x >= 0x1F680 && x <= 0x1F6C5
+		|| x === 0x1F6CC
+		|| x >= 0x1F6D0 && x <= 0x1F6D2
+		|| x >= 0x1F6D5 && x <= 0x1F6D7
+		|| x >= 0x1F6DC && x <= 0x1F6DF
+		|| x === 0x1F6EB
+		|| x === 0x1F6EC
+		|| x >= 0x1F6F4 && x <= 0x1F6FC
+		|| x >= 0x1F7E0 && x <= 0x1F7EB
+		|| x === 0x1F7F0
+		|| x >= 0x1F90C && x <= 0x1F93A
+		|| x >= 0x1F93C && x <= 0x1F945
+		|| x >= 0x1F947 && x <= 0x1F9FF
+		|| x >= 0x1FA70 && x <= 0x1FA7C
+		|| x >= 0x1FA80 && x <= 0x1FA89
+		|| x >= 0x1FA8F && x <= 0x1FAC6
+		|| x >= 0x1FACE && x <= 0x1FADC
+		|| x >= 0x1FADF && x <= 0x1FAE9
+		|| x >= 0x1FAF0 && x <= 0x1FAF8
+		|| x >= 0x20000 && x <= 0x2FFFD
+		|| x >= 0x30000 && x <= 0x3FFFD;
+}
+
+function validate(codePoint) {
+	if (!Number.isSafeInteger(codePoint)) {
+		throw new TypeError(`Expected a code point, got \`${typeof codePoint}\`.`);
+	}
+}
+
+function eastAsianWidth(codePoint, {ambiguousAsWide = false} = {}) {
+	validate(codePoint);
+
+	if (
+		isFullWidth(codePoint)
+		|| isWide(codePoint)
+		|| (ambiguousAsWide && isAmbiguous(codePoint))
+	) {
+		return 2;
+	}
+
+	return 1;
+}
+
+var emojiRegex = () => {
+	// https://mths.be/emoji
+	return /[#*0-9]\uFE0F?\u20E3|[\xA9\xAE\u203C\u2049\u2122\u2139\u2194-\u2199\u21A9\u21AA\u231A\u231B\u2328\u23CF\u23ED-\u23EF\u23F1\u23F2\u23F8-\u23FA\u24C2\u25AA\u25AB\u25B6\u25C0\u25FB\u25FC\u25FE\u2600-\u2604\u260E\u2611\u2614\u2615\u2618\u2620\u2622\u2623\u2626\u262A\u262E\u262F\u2638-\u263A\u2640\u2642\u2648-\u2653\u265F\u2660\u2663\u2665\u2666\u2668\u267B\u267E\u267F\u2692\u2694-\u2697\u2699\u269B\u269C\u26A0\u26A7\u26AA\u26B0\u26B1\u26BD\u26BE\u26C4\u26C8\u26CF\u26D1\u26E9\u26F0-\u26F5\u26F7\u26F8\u26FA\u2702\u2708\u2709\u270F\u2712\u2714\u2716\u271D\u2721\u2733\u2734\u2744\u2747\u2757\u2763\u27A1\u2934\u2935\u2B05-\u2B07\u2B1B\u2B1C\u2B55\u3030\u303D\u3297\u3299]\uFE0F?|[\u261D\u270C\u270D](?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?|[\u270A\u270B](?:\uD83C[\uDFFB-\uDFFF])?|[\u23E9-\u23EC\u23F0\u23F3\u25FD\u2693\u26A1\u26AB\u26C5\u26CE\u26D4\u26EA\u26FD\u2705\u2728\u274C\u274E\u2753-\u2755\u2795-\u2797\u27B0\u27BF\u2B50]|\u26D3\uFE0F?(?:\u200D\uD83D\uDCA5)?|\u26F9(?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?(?:\u200D[\u2640\u2642]\uFE0F?)?|\u2764\uFE0F?(?:\u200D(?:\uD83D\uDD25|\uD83E\uDE79))?|\uD83C(?:[\uDC04\uDD70\uDD71\uDD7E\uDD7F\uDE02\uDE37\uDF21\uDF24-\uDF2C\uDF36\uDF7D\uDF96\uDF97\uDF99-\uDF9B\uDF9E\uDF9F\uDFCD\uDFCE\uDFD4-\uDFDF\uDFF5\uDFF7]\uFE0F?|[\uDF85\uDFC2\uDFC7](?:\uD83C[\uDFFB-\uDFFF])?|[\uDFC4\uDFCA](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDFCB\uDFCC](?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDCCF\uDD8E\uDD91-\uDD9A\uDE01\uDE1A\uDE2F\uDE32-\uDE36\uDE38-\uDE3A\uDE50\uDE51\uDF00-\uDF20\uDF2D-\uDF35\uDF37-\uDF43\uDF45-\uDF4A\uDF4C-\uDF7C\uDF7E-\uDF84\uDF86-\uDF93\uDFA0-\uDFC1\uDFC5\uDFC6\uDFC8\uDFC9\uDFCF-\uDFD3\uDFE0-\uDFF0\uDFF8-\uDFFF]|\uDDE6\uD83C[\uDDE8-\uDDEC\uDDEE\uDDF1\uDDF2\uDDF4\uDDF6-\uDDFA\uDDFC\uDDFD\uDDFF]|\uDDE7\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEF\uDDF1-\uDDF4\uDDF6-\uDDF9\uDDFB\uDDFC\uDDFE\uDDFF]|\uDDE8\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDEE\uDDF0-\uDDF7\uDDFA-\uDDFF]|\uDDE9\uD83C[\uDDEA\uDDEC\uDDEF\uDDF0\uDDF2\uDDF4\uDDFF]|\uDDEA\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDED\uDDF7-\uDDFA]|\uDDEB\uD83C[\uDDEE-\uDDF0\uDDF2\uDDF4\uDDF7]|\uDDEC\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEE\uDDF1-\uDDF3\uDDF5-\uDDFA\uDDFC\uDDFE]|\uDDED\uD83C[\uDDF0\uDDF2\uDDF3\uDDF7\uDDF9\uDDFA]|\uDDEE\uD83C[\uDDE8-\uDDEA\uDDF1-\uDDF4\uDDF6-\uDDF9]|\uDDEF\uD83C[\uDDEA\uDDF2\uDDF4\uDDF5]|\uDDF0\uD83C[\uDDEA\uDDEC-\uDDEE\uDDF2\uDDF3\uDDF5\uDDF7\uDDFC\uDDFE\uDDFF]|\uDDF1\uD83C[\uDDE6-\uDDE8\uDDEE\uDDF0\uDDF7-\uDDFB\uDDFE]|\uDDF2\uD83C[\uDDE6\uDDE8-\uDDED\uDDF0-\uDDFF]|\uDDF3\uD83C[\uDDE6\uDDE8\uDDEA-\uDDEC\uDDEE\uDDF1\uDDF4\uDDF5\uDDF7\uDDFA\uDDFF]|\uDDF4\uD83C\uDDF2|\uDDF5\uD83C[\uDDE6\uDDEA-\uDDED\uDDF0-\uDDF3\uDDF7-\uDDF9\uDDFC\uDDFE]|\uDDF6\uD83C\uDDE6|\uDDF7\uD83C[\uDDEA\uDDF4\uDDF8\uDDFA\uDDFC]|\uDDF8\uD83C[\uDDE6-\uDDEA\uDDEC-\uDDF4\uDDF7-\uDDF9\uDDFB\uDDFD-\uDDFF]|\uDDF9\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDED\uDDEF-\uDDF4\uDDF7\uDDF9\uDDFB\uDDFC\uDDFF]|\uDDFA\uD83C[\uDDE6\uDDEC\uDDF2\uDDF3\uDDF8\uDDFE\uDDFF]|\uDDFB\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDEE\uDDF3\uDDFA]|\uDDFC\uD83C[\uDDEB\uDDF8]|\uDDFD\uD83C\uDDF0|\uDDFE\uD83C[\uDDEA\uDDF9]|\uDDFF\uD83C[\uDDE6\uDDF2\uDDFC]|\uDF44(?:\u200D\uD83D\uDFEB)?|\uDF4B(?:\u200D\uD83D\uDFE9)?|\uDFC3(?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D(?:[\u2640\u2642]\uFE0F?(?:\u200D\u27A1\uFE0F?)?|\u27A1\uFE0F?))?|\uDFF3\uFE0F?(?:\u200D(?:\u26A7\uFE0F?|\uD83C\uDF08))?|\uDFF4(?:\u200D\u2620\uFE0F?|\uDB40\uDC67\uDB40\uDC62\uDB40(?:\uDC65\uDB40\uDC6E\uDB40\uDC67|\uDC73\uDB40\uDC63\uDB40\uDC74|\uDC77\uDB40\uDC6C\uDB40\uDC73)\uDB40\uDC7F)?)|\uD83D(?:[\uDC3F\uDCFD\uDD49\uDD4A\uDD6F\uDD70\uDD73\uDD76-\uDD79\uDD87\uDD8A-\uDD8D\uDDA5\uDDA8\uDDB1\uDDB2\uDDBC\uDDC2-\uDDC4\uDDD1-\uDDD3\uDDDC-\uDDDE\uDDE1\uDDE3\uDDE8\uDDEF\uDDF3\uDDFA\uDECB\uDECD-\uDECF\uDEE0-\uDEE5\uDEE9\uDEF0\uDEF3]\uFE0F?|[\uDC42\uDC43\uDC46-\uDC50\uDC66\uDC67\uDC6B-\uDC6D\uDC72\uDC74-\uDC76\uDC78\uDC7C\uDC83\uDC85\uDC8F\uDC91\uDCAA\uDD7A\uDD95\uDD96\uDE4C\uDE4F\uDEC0\uDECC](?:\uD83C[\uDFFB-\uDFFF])?|[\uDC6E\uDC70\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4\uDEB5](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDD74\uDD90](?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?|[\uDC00-\uDC07\uDC09-\uDC14\uDC16-\uDC25\uDC27-\uDC3A\uDC3C-\uDC3E\uDC40\uDC44\uDC45\uDC51-\uDC65\uDC6A\uDC79-\uDC7B\uDC7D-\uDC80\uDC84\uDC88-\uDC8E\uDC90\uDC92-\uDCA9\uDCAB-\uDCFC\uDCFF-\uDD3D\uDD4B-\uDD4E\uDD50-\uDD67\uDDA4\uDDFB-\uDE2D\uDE2F-\uDE34\uDE37-\uDE41\uDE43\uDE44\uDE48-\uDE4A\uDE80-\uDEA2\uDEA4-\uDEB3\uDEB7-\uDEBF\uDEC1-\uDEC5\uDED0-\uDED2\uDED5-\uDED7\uDEDC-\uDEDF\uDEEB\uDEEC\uDEF4-\uDEFC\uDFE0-\uDFEB\uDFF0]|\uDC08(?:\u200D\u2B1B)?|\uDC15(?:\u200D\uD83E\uDDBA)?|\uDC26(?:\u200D(?:\u2B1B|\uD83D\uDD25))?|\uDC3B(?:\u200D\u2744\uFE0F?)?|\uDC41\uFE0F?(?:\u200D\uD83D\uDDE8\uFE0F?)?|\uDC68(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDC68\uDC69]\u200D\uD83D(?:\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?)|[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?)|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]))|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D\uDC68\uD83C[\uDFFC-\uDFFF])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D\uDC68\uD83C[\uDFFB\uDFFD-\uDFFF])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D\uDC68\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D\uDC68\uD83C[\uDFFB-\uDFFD\uDFFF])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D\uDC68\uD83C[\uDFFB-\uDFFE])))?))?|\uDC69(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?[\uDC68\uDC69]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?|\uDC69\u200D\uD83D(?:\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?))|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]))|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFC-\uDFFF])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB\uDFFD-\uDFFF])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB-\uDFFD\uDFFF])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB-\uDFFE])))?))?|\uDC6F(?:\u200D[\u2640\u2642]\uFE0F?)?|\uDD75(?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?(?:\u200D[\u2640\u2642]\uFE0F?)?|\uDE2E(?:\u200D\uD83D\uDCA8)?|\uDE35(?:\u200D\uD83D\uDCAB)?|\uDE36(?:\u200D\uD83C\uDF2B\uFE0F?)?|\uDE42(?:\u200D[\u2194\u2195]\uFE0F?)?|\uDEB6(?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D(?:[\u2640\u2642]\uFE0F?(?:\u200D\u27A1\uFE0F?)?|\u27A1\uFE0F?))?)|\uD83E(?:[\uDD0C\uDD0F\uDD18-\uDD1F\uDD30-\uDD34\uDD36\uDD77\uDDB5\uDDB6\uDDBB\uDDD2\uDDD3\uDDD5\uDEC3-\uDEC5\uDEF0\uDEF2-\uDEF8](?:\uD83C[\uDFFB-\uDFFF])?|[\uDD26\uDD35\uDD37-\uDD39\uDD3D\uDD3E\uDDB8\uDDB9\uDDCD\uDDCF\uDDD4\uDDD6-\uDDDD](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDDDE\uDDDF](?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDD0D\uDD0E\uDD10-\uDD17\uDD20-\uDD25\uDD27-\uDD2F\uDD3A\uDD3F-\uDD45\uDD47-\uDD76\uDD78-\uDDB4\uDDB7\uDDBA\uDDBC-\uDDCC\uDDD0\uDDE0-\uDDFF\uDE70-\uDE7C\uDE80-\uDE89\uDE8F-\uDEC2\uDEC6\uDECE-\uDEDC\uDEDF-\uDEE9]|\uDD3C(?:\u200D[\u2640\u2642]\uFE0F?|\uD83C[\uDFFB-\uDFFF])?|\uDDCE(?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D(?:[\u2640\u2642]\uFE0F?(?:\u200D\u27A1\uFE0F?)?|\u27A1\uFE0F?))?|\uDDD1(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83E\uDDD1|\uDDD1\u200D\uD83E\uDDD2(?:\u200D\uD83E\uDDD2)?|\uDDD2(?:\u200D\uD83E\uDDD2)?))|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFC-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB\uDFFD-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB-\uDFFD\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB-\uDFFE]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF])))?))?|\uDEF1(?:\uD83C(?:\uDFFB(?:\u200D\uD83E\uDEF2\uD83C[\uDFFC-\uDFFF])?|\uDFFC(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB\uDFFD-\uDFFF])?|\uDFFD(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])?|\uDFFE(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB-\uDFFD\uDFFF])?|\uDFFF(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB-\uDFFE])?))?)/g;
+};
+
+const segmenter = new Intl.Segmenter();
+
+const defaultIgnorableCodePointRegex = /^\p{Default_Ignorable_Code_Point}$/u;
+
+function stringWidth(string, options = {}) {
+	if (typeof string !== 'string' || string.length === 0) {
+		return 0;
+	}
+
+	const {
+		ambiguousIsNarrow = true,
+		countAnsiEscapeCodes = false,
+	} = options;
+
+	if (!countAnsiEscapeCodes) {
+		string = stripAnsi(string);
+	}
+
+	if (string.length === 0) {
+		return 0;
+	}
+
+	let width = 0;
+	const eastAsianWidthOptions = {ambiguousAsWide: !ambiguousIsNarrow};
+
+	for (const {segment: character} of segmenter.segment(string)) {
+		const codePoint = character.codePointAt(0);
+
+		// Ignore control characters
+		if (codePoint <= 0x1F || (codePoint >= 0x7F && codePoint <= 0x9F)) {
+			continue;
+		}
+
+		// Ignore zero-width characters
+		if (
+			(codePoint >= 0x20_0B && codePoint <= 0x20_0F) // Zero-width space, non-joiner, joiner, left-to-right mark, right-to-left mark
+			|| codePoint === 0xFE_FF // Zero-width no-break space
+		) {
+			continue;
+		}
+
+		// Ignore combining characters
+		if (
+			(codePoint >= 0x3_00 && codePoint <= 0x3_6F) // Combining diacritical marks
+			|| (codePoint >= 0x1A_B0 && codePoint <= 0x1A_FF) // Combining diacritical marks extended
+			|| (codePoint >= 0x1D_C0 && codePoint <= 0x1D_FF) // Combining diacritical marks supplement
+			|| (codePoint >= 0x20_D0 && codePoint <= 0x20_FF) // Combining diacritical marks for symbols
+			|| (codePoint >= 0xFE_20 && codePoint <= 0xFE_2F) // Combining half marks
+		) {
+			continue;
+		}
+
+		// Ignore surrogate pairs
+		if (codePoint >= 0xD8_00 && codePoint <= 0xDF_FF) {
+			continue;
+		}
+
+		// Ignore variation selectors
+		if (codePoint >= 0xFE_00 && codePoint <= 0xFE_0F) {
+			continue;
+		}
+
+		// This covers some of the above cases, but we still keep them for performance reasons.
+		if (defaultIgnorableCodePointRegex.test(character)) {
+			continue;
+		}
+
+		// TODO: Use `/\p{RGI_Emoji}/v` when targeting Node.js 20.
+		if (emojiRegex().test(character)) {
+			width += 2;
+			continue;
+		}
+
+		width += eastAsianWidth(codePoint, eastAsianWidthOptions);
+	}
+
+	return width;
+}
+
+function isInteractive({stream = process.stdout} = {}) {
+	return Boolean(
+		stream && stream.isTTY &&
+		process.env.TERM !== 'dumb' &&
+		!('CI' in process.env)
+	);
+}
+
+function isUnicodeSupported() {
+	const {env} = process$2;
+	const {TERM, TERM_PROGRAM} = env;
+
+	if (process$2.platform !== 'win32') {
+		return TERM !== 'linux'; // Linux console (kernel)
+	}
+
+	return Boolean(env.WT_SESSION) // Windows Terminal
+		|| Boolean(env.TERMINUS_SUBLIME) // Terminus (<0.2.27)
+		|| env.ConEmuTask === '{cmd::Cmder}' // ConEmu and cmder
+		|| TERM_PROGRAM === 'Terminus-Sublime'
+		|| TERM_PROGRAM === 'vscode'
+		|| TERM === 'xterm-256color'
+		|| TERM === 'alacritty'
+		|| TERM === 'rxvt-unicode'
+		|| TERM === 'rxvt-unicode-256color'
+		|| env.TERMINAL_EMULATOR === 'JetBrains-JediTerm';
+}
+
+const ASCII_ETX_CODE = 0x03; // Ctrl+C emits this code
+
+class StdinDiscarder {
+	#activeCount = 0;
+
+	start() {
+		this.#activeCount++;
+
+		if (this.#activeCount === 1) {
+			this.#realStart();
+		}
+	}
+
+	stop() {
+		if (this.#activeCount <= 0) {
+			throw new Error('`stop` called more times than `start`');
+		}
+
+		this.#activeCount--;
+
+		if (this.#activeCount === 0) {
+			this.#realStop();
+		}
+	}
+
+	#realStart() {
+		// No known way to make it work reliably on Windows.
+		if (process$2.platform === 'win32' || !process$2.stdin.isTTY) {
+			return;
+		}
+
+		process$2.stdin.setRawMode(true);
+		process$2.stdin.on('data', this.#handleInput);
+		process$2.stdin.resume();
+	}
+
+	#realStop() {
+		if (!process$2.stdin.isTTY) {
+			return;
+		}
+
+		process$2.stdin.off('data', this.#handleInput);
+		process$2.stdin.pause();
+		process$2.stdin.setRawMode(false);
+	}
+
+	#handleInput(chunk) {
+		// Allow Ctrl+C to gracefully exit.
+		if (chunk[0] === ASCII_ETX_CODE) {
+			process$2.emit('SIGINT');
+		}
+	}
+}
+
+const stdinDiscarder = new StdinDiscarder();
+
+class Ora {
+	#linesToClear = 0;
+	#isDiscardingStdin = false;
+	#lineCount = 0;
+	#frameIndex = -1;
+	#lastSpinnerFrameTime = 0;
+	#options;
+	#spinner;
+	#stream;
+	#id;
+	#initialInterval;
+	#isEnabled;
+	#isSilent;
+	#indent;
+	#text;
+	#prefixText;
+	#suffixText;
+	color;
+
+	constructor(options) {
+		if (typeof options === 'string') {
+			options = {
+				text: options,
+			};
+		}
+
+		this.#options = {
+			color: 'cyan',
+			stream: process$2.stderr,
+			discardStdin: true,
+			hideCursor: true,
+			...options,
+		};
+
+		// Public
+		this.color = this.#options.color;
+
+		// It's important that these use the public setters.
+		this.spinner = this.#options.spinner;
+
+		this.#initialInterval = this.#options.interval;
+		this.#stream = this.#options.stream;
+		this.#isEnabled = typeof this.#options.isEnabled === 'boolean' ? this.#options.isEnabled : isInteractive({stream: this.#stream});
+		this.#isSilent = typeof this.#options.isSilent === 'boolean' ? this.#options.isSilent : false;
+
+		// Set *after* `this.#stream`.
+		// It's important that these use the public setters.
+		this.text = this.#options.text;
+		this.prefixText = this.#options.prefixText;
+		this.suffixText = this.#options.suffixText;
+		this.indent = this.#options.indent;
+
+		if (process$2.env.NODE_ENV === 'test') {
+			this._stream = this.#stream;
+			this._isEnabled = this.#isEnabled;
+
+			Object.defineProperty(this, '_linesToClear', {
+				get() {
+					return this.#linesToClear;
+				},
+				set(newValue) {
+					this.#linesToClear = newValue;
+				},
+			});
+
+			Object.defineProperty(this, '_frameIndex', {
+				get() {
+					return this.#frameIndex;
+				},
+			});
+
+			Object.defineProperty(this, '_lineCount', {
+				get() {
+					return this.#lineCount;
+				},
+			});
+		}
+	}
+
+	get indent() {
+		return this.#indent;
+	}
+
+	set indent(indent = 0) {
+		if (!(indent >= 0 && Number.isInteger(indent))) {
+			throw new Error('The `indent` option must be an integer from 0 and up');
+		}
+
+		this.#indent = indent;
+		this.#updateLineCount();
+	}
+
+	get interval() {
+		return this.#initialInterval ?? this.#spinner.interval ?? 100;
+	}
+
+	get spinner() {
+		return this.#spinner;
+	}
+
+	set spinner(spinner) {
+		this.#frameIndex = -1;
+		this.#initialInterval = undefined;
+
+		if (typeof spinner === 'object') {
+			if (spinner.frames === undefined) {
+				throw new Error('The given spinner must have a `frames` property');
+			}
+
+			this.#spinner = spinner;
+		} else if (!isUnicodeSupported()) {
+			this.#spinner = cliSpinners.line;
+		} else if (spinner === undefined) {
+			// Set default spinner
+			this.#spinner = cliSpinners.dots;
+		} else if (spinner !== 'default' && cliSpinners[spinner]) {
+			this.#spinner = cliSpinners[spinner];
+		} else {
+			throw new Error(`There is no built-in spinner named '${spinner}'. See https://github.com/sindresorhus/cli-spinners/blob/main/spinners.json for a full list.`);
+		}
+	}
+
+	get text() {
+		return this.#text;
+	}
+
+	set text(value = '') {
+		this.#text = value;
+		this.#updateLineCount();
+	}
+
+	get prefixText() {
+		return this.#prefixText;
+	}
+
+	set prefixText(value = '') {
+		this.#prefixText = value;
+		this.#updateLineCount();
+	}
+
+	get suffixText() {
+		return this.#suffixText;
+	}
+
+	set suffixText(value = '') {
+		this.#suffixText = value;
+		this.#updateLineCount();
+	}
+
+	get isSpinning() {
+		return this.#id !== undefined;
+	}
+
+	#getFullPrefixText(prefixText = this.#prefixText, postfix = ' ') {
+		if (typeof prefixText === 'string' && prefixText !== '') {
+			return prefixText + postfix;
+		}
+
+		if (typeof prefixText === 'function') {
+			return prefixText() + postfix;
+		}
+
+		return '';
+	}
+
+	#getFullSuffixText(suffixText = this.#suffixText, prefix = ' ') {
+		if (typeof suffixText === 'string' && suffixText !== '') {
+			return prefix + suffixText;
+		}
+
+		if (typeof suffixText === 'function') {
+			return prefix + suffixText();
+		}
+
+		return '';
+	}
+
+	#updateLineCount() {
+		const columns = this.#stream.columns ?? 80;
+		const fullPrefixText = this.#getFullPrefixText(this.#prefixText, '-');
+		const fullSuffixText = this.#getFullSuffixText(this.#suffixText, '-');
+		const fullText = ' '.repeat(this.#indent) + fullPrefixText + '--' + this.#text + '--' + fullSuffixText;
+
+		this.#lineCount = 0;
+		for (const line of stripAnsi(fullText).split('\n')) {
+			this.#lineCount += Math.max(1, Math.ceil(stringWidth(line, {countAnsiEscapeCodes: true}) / columns));
+		}
+	}
+
+	get isEnabled() {
+		return this.#isEnabled && !this.#isSilent;
+	}
+
+	set isEnabled(value) {
+		if (typeof value !== 'boolean') {
+			throw new TypeError('The `isEnabled` option must be a boolean');
+		}
+
+		this.#isEnabled = value;
+	}
+
+	get isSilent() {
+		return this.#isSilent;
+	}
+
+	set isSilent(value) {
+		if (typeof value !== 'boolean') {
+			throw new TypeError('The `isSilent` option must be a boolean');
+		}
+
+		this.#isSilent = value;
+	}
+
+	frame() {
+		// Ensure we only update the spinner frame at the wanted interval,
+		// even if the render method is called more often.
+		const now = Date.now();
+		if (this.#frameIndex === -1 || now - this.#lastSpinnerFrameTime >= this.interval) {
+			this.#frameIndex = ++this.#frameIndex % this.#spinner.frames.length;
+			this.#lastSpinnerFrameTime = now;
+		}
+
+		const {frames} = this.#spinner;
+		let frame = frames[this.#frameIndex];
+
+		if (this.color) {
+			frame = chalk[this.color](frame);
+		}
+
+		const fullPrefixText = (typeof this.#prefixText === 'string' && this.#prefixText !== '') ? this.#prefixText + ' ' : '';
+		const fullText = typeof this.text === 'string' ? ' ' + this.text : '';
+		const fullSuffixText = (typeof this.#suffixText === 'string' && this.#suffixText !== '') ? ' ' + this.#suffixText : '';
+
+		return fullPrefixText + frame + fullText + fullSuffixText;
+	}
+
+	clear() {
+		if (!this.#isEnabled || !this.#stream.isTTY) {
+			return this;
+		}
+
+		this.#stream.cursorTo(0);
+
+		for (let index = 0; index < this.#linesToClear; index++) {
+			if (index > 0) {
+				this.#stream.moveCursor(0, -1);
+			}
+
+			this.#stream.clearLine(1);
+		}
+
+		if (this.#indent || this.lastIndent !== this.#indent) {
+			this.#stream.cursorTo(this.#indent);
+		}
+
+		this.lastIndent = this.#indent;
+		this.#linesToClear = 0;
+
+		return this;
+	}
+
+	render() {
+		if (this.#isSilent) {
+			return this;
+		}
+
+		this.clear();
+		this.#stream.write(this.frame());
+		this.#linesToClear = this.#lineCount;
+
+		return this;
+	}
+
+	start(text) {
+		if (text) {
+			this.text = text;
+		}
+
+		if (this.#isSilent) {
+			return this;
+		}
+
+		if (!this.#isEnabled) {
+			if (this.text) {
+				this.#stream.write(`- ${this.text}\n`);
+			}
+
+			return this;
+		}
+
+		if (this.isSpinning) {
+			return this;
+		}
+
+		if (this.#options.hideCursor) {
+			cliCursor.hide(this.#stream);
+		}
+
+		if (this.#options.discardStdin && process$2.stdin.isTTY) {
+			this.#isDiscardingStdin = true;
+			stdinDiscarder.start();
+		}
+
+		this.render();
+		this.#id = setInterval(this.render.bind(this), this.interval);
+
+		return this;
+	}
+
+	stop() {
+		if (!this.#isEnabled) {
+			return this;
+		}
+
+		clearInterval(this.#id);
+		this.#id = undefined;
+		this.#frameIndex = 0;
+		this.clear();
+		if (this.#options.hideCursor) {
+			cliCursor.show(this.#stream);
+		}
+
+		if (this.#options.discardStdin && process$2.stdin.isTTY && this.#isDiscardingStdin) {
+			stdinDiscarder.stop();
+			this.#isDiscardingStdin = false;
+		}
+
+		return this;
+	}
+
+	succeed(text) {
+		return this.stopAndPersist({symbol: logSymbols.success, text});
+	}
+
+	fail(text) {
+		return this.stopAndPersist({symbol: logSymbols.error, text});
+	}
+
+	warn(text) {
+		return this.stopAndPersist({symbol: logSymbols.warning, text});
+	}
+
+	info(text) {
+		return this.stopAndPersist({symbol: logSymbols.info, text});
+	}
+
+	stopAndPersist(options = {}) {
+		if (this.#isSilent) {
+			return this;
+		}
+
+		const prefixText = options.prefixText ?? this.#prefixText;
+		const fullPrefixText = this.#getFullPrefixText(prefixText, ' ');
+
+		const symbolText = options.symbol ?? ' ';
+
+		const text = options.text ?? this.text;
+		const separatorText = symbolText ? ' ' : '';
+		const fullText = (typeof text === 'string') ? separatorText + text : '';
+
+		const suffixText = options.suffixText ?? this.#suffixText;
+		const fullSuffixText = this.#getFullSuffixText(suffixText, ' ');
+
+		const textToWrite = fullPrefixText + symbolText + fullText + fullSuffixText + '\n';
+
+		this.stop();
+		this.#stream.write(textToWrite);
+
+		return this;
+	}
+}
+
+function ora(options) {
+	return new Ora(options);
+}
+
+function update() {
+    const spinner = ora({
+        text: "npm install -g yys-app-cli",
+        spinner: {
+            frames: ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"].map((item) => chalk$1.green(item)),
+            interval: 50, // Optional
+        },
+        color: "yellow",
+    });
+    spinner.start();
+    require$$1$1.exec("npm install -g yys-app-cli", (error, stdout, stderr) => {
+        spinner.stop();
+        if (!error) {
+            console.log(chalk$1.green("更新成功"));
+        }
+        else {
+            console.log(chalk$1.red("更新失败"));
+        }
+    });
+}
+
 const program = new Command();
-program.name("cli").version(version);
+program.name("cli").version(version, "-v --version");
 program
     .command("create")
     .description("create a new project")
     .action(() => {
     console.log("start to create project...");
     create();
+});
+program
+    .command("update")
+    .description("更新脚手架yys-app-cli")
+    .action(() => {
+    update();
 });
 program.parse();
