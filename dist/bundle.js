@@ -18528,7 +18528,7 @@ const printCLILogo = (name) => {
                 console.dir(err);
                 return;
             }
-            console.log(chalk$1.redBright(data));
+            console.log(chalk$1.blueBright(data));
         });
     }
     catch (err) {
@@ -18615,7 +18615,7 @@ function isCoverDir(name) {
     });
 }
 
-var version = "0.1.3";
+var version = "0.1.4";
 
 function bind(fn, thisArg) {
   return function wrap() {
