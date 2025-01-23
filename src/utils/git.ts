@@ -2,6 +2,7 @@ import { simpleGit, SimpleGitOptions } from "simple-git";
 import createLogger from "progress-estimator";
 import chalk from "chalk";
 // import cliSpinners from "cli-spinners";
+import { log, printCLILogo } from "../utils/log";
 
 const logger = createLogger({
   // spinner: cliSpinners.dots,
@@ -31,14 +32,18 @@ export async function clone(repository: string, pName: string, options: string[]
     await logger(git.clone(repository, pName, options), "clone repository from remote repository...", {
       estimate: 10000, // 预计耗时，单位为毫秒
     });
-    console.log(chalk.green("clone repository success"));
+    log.success("clone repository success");
+
     console.log();
-    console.log(chalk.yellow("cd <your-project>"));
-    console.log(chalk.yellow("npm install"));
-    console.log(chalk.yellow("npm run dev"));
+    log.info(chalk.yellow(" cd <your-project>"));
+    log.info(chalk.yellow(" npm install"));
+    log.info(chalk.yellow(" npm run dev"));
     console.log(chalk.blueBright("when you are done, run `npm run build` to compile your project."));
+
+    // figlet
+    printCLILogo("yys-app-cli");
   } catch (e) {
     /* handle all errors here */
-    console.log(chalk.red("clone repository error"), e);
+    log.error(chalk.red("clone repository error"));
   }
 }

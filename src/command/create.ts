@@ -1,6 +1,7 @@
 import { input, select } from "@inquirer/prompts";
 import { clone } from "../utils/git";
 import { checkDirExists, isCoverDir } from "../utils/file";
+import { log } from "../utils/log";
 import fs from "node:fs/promises";
 import { version } from "../../package.json";
 import axios from "axios";
@@ -85,7 +86,6 @@ const checkVersion = async (name: string, version: string) => {
 
 export const create = async () => {
   // 初始化模版列表
-  // console.log("templates", templates);
   const templateList = Array.from(templates).map((item: [string, ITemplateInfo]) => {
     const [key, value] = item;
     return { name: value.name, value: key, description: value.description };
@@ -93,8 +93,8 @@ export const create = async () => {
   // 检测版本信息
   const vbersionBool = await checkVersion("yys-app-cli", version);
   if (!vbersionBool) {
-    console.log(chalk.red(`当前版本为${version}，请更新到最新版本`));
-    console.log(chalk.blueBright(`请执行以下命令更新：npm install -g yys-app-cli`));
+    log.warn(`当前版本为${version}，请更新到最新版本`);
+    log.info(`请执行以下命令更新：npm install -g yys-app-cli`);
     return;
   }
   // 输入项目名称
@@ -103,7 +103,6 @@ export const create = async () => {
   });
   // console.log("pName", pName);
   const exists = await checkDirExists(pName);
-  console.log("exists", exists);
   if (exists) {
     const cover = await isCoverDir(pName);
     if (cover) {
@@ -119,12 +118,11 @@ export const create = async () => {
     choices: templateList as any,
   });
   // 打印模版信息
-  // console.log("pTemplate", pTemplate, templates.get(pTemplate));
   const selectedTemplate = templates.get(pTemplate);
   // 克隆项目
   if (selectedTemplate) {
     clone(selectedTemplate.repository, pName, ["-b", selectedTemplate.branch]);
   } else {
-    console.log("模板不存在");
+    log.error("模板不存在");
   }
 };

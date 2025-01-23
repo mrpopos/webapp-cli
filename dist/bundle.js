@@ -53,7 +53,7 @@ var commander$1 = {};
 
 var argument = {};
 
-var error = {};
+var error$1 = {};
 
 /**
  * CommanderError class
@@ -62,7 +62,7 @@ var error = {};
 var hasRequiredError;
 
 function requireError () {
-	if (hasRequiredError) return error;
+	if (hasRequiredError) return error$1;
 	hasRequiredError = 1;
 	class CommanderError extends Error {
 	  /**
@@ -98,9 +98,9 @@ function requireError () {
 	  }
 	}
 
-	error.CommanderError = CommanderError;
-	error.InvalidArgumentError = InvalidArgumentError;
-	return error;
+	error$1.CommanderError = CommanderError;
+	error$1.InvalidArgumentError = InvalidArgumentError;
+	return error$1;
 }
 
 var hasRequiredArgument;
@@ -18500,7 +18500,43 @@ function requireSource () {
 var sourceExports = requireSource();
 var chalk$1 = /*@__PURE__*/getDefaultExportFromCjs(sourceExports);
 
-// import cliSpinners from "cli-spinners";
+const info = 'ℹ️';
+const success = '✅';
+const warning = '⚠️';
+const error = '❌️';
+
+const figlet = require("figlet");
+const log = {
+    info: (message) => {
+        console.log(info, message);
+    },
+    error: (message) => {
+        console.log(error, message);
+    },
+    success: (message) => {
+        console.log(success, message);
+    },
+    warn: (message) => {
+        console.log(warning, message);
+    },
+};
+const printCLILogo = (name) => {
+    try {
+        figlet(name, function (err, data) {
+            if (err) {
+                console.log("Something went wrong...");
+                console.dir(err);
+                return;
+            }
+            console.log(chalk$1.redBright(data));
+        });
+    }
+    catch (err) {
+        console.log("Something went wrong...");
+        console.dir(err);
+    }
+};
+
 const logger = createLogger({
     // spinner: cliSpinners.dots,
     spinner: {
@@ -18528,16 +18564,18 @@ function clone(repository, pName, options) {
             yield logger(git.clone(repository, pName, options), "clone repository from remote repository...", {
                 estimate: 10000, // 预计耗时，单位为毫秒
             });
-            console.log(chalk$1.green("clone repository success"));
+            log.success("clone repository success");
             console.log();
-            console.log(chalk$1.yellow("cd <your-project>"));
-            console.log(chalk$1.yellow("npm install"));
-            console.log(chalk$1.yellow("npm run dev"));
+            log.info(chalk$1.yellow(" cd <your-project>"));
+            log.info(chalk$1.yellow(" npm install"));
+            log.info(chalk$1.yellow(" npm run dev"));
             console.log(chalk$1.blueBright("when you are done, run `npm run build` to compile your project."));
+            // figlet
+            printCLILogo("yys-app-cli");
         }
         catch (e) {
             /* handle all errors here */
-            console.log(chalk$1.red("clone repository error"), e);
+            log.error(chalk$1.red("clone repository error"));
         }
     });
 }
@@ -36439,7 +36477,6 @@ const checkVersion = (name, version) => __awaiter(undefined, undefined, undefine
 });
 const create = () => __awaiter(undefined, undefined, undefined, function* () {
     // 初始化模版列表
-    // console.log("templates", templates);
     const templateList = Array.from(templates).map((item) => {
         const [key, value] = item;
         return { name: value.name, value: key, description: value.description };
@@ -36447,8 +36484,8 @@ const create = () => __awaiter(undefined, undefined, undefined, function* () {
     // 检测版本信息
     const vbersionBool = yield checkVersion("yys-app-cli", version);
     if (!vbersionBool) {
-        console.log(chalk$1.red(`当前版本为${version}，请更新到最新版本`));
-        console.log(chalk$1.blueBright(`请执行以下命令更新：npm install -g yys-app-cli`));
+        log.warn(`当前版本为${version}，请更新到最新版本`);
+        log.info(`请执行以下命令更新：npm install -g yys-app-cli`);
         return;
     }
     // 输入项目名称
@@ -36457,7 +36494,6 @@ const create = () => __awaiter(undefined, undefined, undefined, function* () {
     });
     // console.log("pName", pName);
     const exists = yield checkDirExists(pName);
-    console.log("exists", exists);
     if (exists) {
         const cover = yield isCoverDir();
         if (cover) {
@@ -36474,14 +36510,13 @@ const create = () => __awaiter(undefined, undefined, undefined, function* () {
         choices: templateList,
     });
     // 打印模版信息
-    // console.log("pTemplate", pTemplate, templates.get(pTemplate));
     const selectedTemplate = templates.get(pTemplate);
     // 克隆项目
     if (selectedTemplate) {
         clone(selectedTemplate.repository, pName, ["-b", selectedTemplate.branch]);
     }
     else {
-        console.log("模板不存在");
+        log.error("模板不存在");
     }
 });
 
@@ -39830,10 +39865,10 @@ function update() {
     require$$1$1.exec("npm install -g yys-app-cli", (error, stdout, stderr) => {
         spinner.stop();
         if (!error) {
-            console.log(chalk$1.green("更新成功"));
+            log.success("更新成功");
         }
         else {
-            console.log(chalk$1.red("更新失败"));
+            log.error("更新失败");
         }
     });
 }
