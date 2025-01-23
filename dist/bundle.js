@@ -18577,7 +18577,7 @@ function isCoverDir(name) {
     });
 }
 
-var version = "0.0.2";
+var version = "0.0.4";
 
 function bind(fn, thisArg) {
   return function wrap() {
@@ -36430,8 +36430,8 @@ const templates = new Map([
 ]);
 const checkVersion = (name, version) => __awaiter(undefined, undefined, undefined, function* () {
     try {
-        const { data } = yield axios.get(`https://registry.npmjs.org/${name}/latest`);
-        return data.version === version;
+        const res = yield axios.get(`https://registry.npmjs.org/${name}/latest`);
+        return res.data.version === version;
     }
     catch (error) {
         return false;

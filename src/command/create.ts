@@ -70,10 +70,14 @@ export const templates: Map<string, ITemplateInfo> = new Map([
   ],
 ]);
 
+interface NpmPackageInfo {
+  version: string;
+}
+
 const checkVersion = async (name: string, version: string) => {
   try {
-    const { data } = await axios.get(`https://registry.npmjs.org/${name}/latest`);
-    return data.version === version;
+    const res = await axios.get<NpmPackageInfo>(`https://registry.npmjs.org/${name}/latest`);
+    return res.data.version === version;
   } catch (error) {
     return false;
   }
